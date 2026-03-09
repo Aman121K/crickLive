@@ -98,12 +98,16 @@ export default function RootLayout({children}) {
             </div>
 
             <div className="footerCol">
-              <h4>Company</h4>
-              <Link href="/advertise-with-us">Advertise With Us</Link>
-              <Link href="/careers">Careers</Link>
+              <h4>More</h4>
+              <Link href="/browse-series">Browse Series</Link>
+              <Link href="/browse-team">Browse Team</Link>
+              <Link href="/browse-player">Browse Player</Link>
+              <Link href="/upcoming-series">Upcoming Series</Link>
+              <Link href="/ranking">Ranking</Link>
+              <Link href="/faq">FAQ</Link>
               <Link href="/about-us">About Us</Link>
-              <Link href="/terms-and-conditions">Terms & Conditions</Link>
-              <Link href="/privacy-notice">Privacy Notice</Link>
+              <Link href="/privacy-notice">Privacy Policy</Link>
+              <Link href="/terms-and-conditions">Terms & Condition</Link>
             </div>
           </div>
           <p className="footerCopy">

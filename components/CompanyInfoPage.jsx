@@ -1,10 +1,10 @@
 import Link from 'next/link';
 
-const CompanyInfoPage = ({title, intro, sections = [], sourceLinks = []}) => {
+const CompanyInfoPage = ({title, intro, sections = [], sourceLinks = [], tag = 'Company Information'}) => {
   return (
     <main className="pageShell infoShell">
       <section className="infoCard">
-        <p className="heroTag">Company Information</p>
+        <p className="heroTag">{tag}</p>
         <h1>{title}</h1>
         <p className="infoIntro">{intro}</p>
 

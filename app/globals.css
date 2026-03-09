@@ -4,9 +4,9 @@
   --ink-soft: #5e728d;
   --surface: #ffffff;
   --line: #d5e0ec;
-  --brand: #0d5d4f;
-  --brand-dark: #083c33;
-  --accent: #f2b533;
+  --brand: #00175f;
+  --brand-dark: #000f3f;
+  --accent: #2f4db0;
   --live: #d73e3e;
   --upcoming: #b97811;
   --result: #1f7f54;
@@ -39,8 +39,8 @@ a {
 .bgPattern {
   position: fixed;
   inset: 0;
-  background-image: radial-gradient(circle at 8% 10%, rgba(13, 93, 79, 0.12), transparent 18%),
-    radial-gradient(circle at 92% 15%, rgba(16, 88, 144, 0.12), transparent 20%);
+  background-image: radial-gradient(circle at 8% 10%, rgba(0, 23, 95, 0.14), transparent 18%),
+    radial-gradient(circle at 92% 15%, rgba(0, 23, 95, 0.10), transparent 20%);
   pointer-events: none;
   z-index: -1;
 }
@@ -60,7 +60,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 70;
-  background: #0d6a52;
+  background: var(--brand);
   color: #ffffff;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
 }
@@ -287,7 +287,7 @@ a {
 
 .venue {
   margin: 0;
-  color: #0f507f;
+  color: var(--brand);
   font-size: 0.8rem;
   font-weight: 700;
 }
@@ -392,6 +392,242 @@ a {
 
 .detailsShell {
   margin-top: 1.6rem;
+}
+
+.detailsBuzzShell {
+  gap: 0.9rem;
+}
+
+.buzzHeaderCard {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.buzzHeaderCard h1 {
+  margin: 0;
+  padding: 1rem 1.15rem 0.3rem;
+  font-size: clamp(1.25rem, 1.1rem + 0.8vw, 2rem);
+  line-height: 1.25;
+}
+
+.buzzMetaRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+  padding: 0.25rem 1.15rem 1rem;
+}
+
+.buzzMetaRow p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
+.buzzMetaRow strong {
+  color: var(--ink);
+}
+
+.buzzTabs {
+  display: flex;
+  align-items: center;
+  gap: 1.35rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  border-top: 1px solid var(--line);
+  padding: 0 1.15rem;
+  min-height: 52px;
+}
+
+.buzzTabs a,
+.buzzTabs button {
+  position: relative;
+  color: #1c273b;
+  font-size: 1.02rem;
+  font-weight: 600;
+  padding: 0.8rem 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.buzzTabs a.active,
+.buzzTabs button.active {
+  color: #028b6b;
+  font-weight: 700;
+}
+
+.buzzTabs a.active::after,
+.buzzTabs button.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: #11a37f;
+}
+
+.buzzTabs button:focus-visible {
+  outline: 2px solid rgba(0, 23, 95, 0.35);
+  outline-offset: 2px;
+}
+
+.buzzBodyGrid {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.buzzMainColumn {
+  border-right: 1px solid var(--line);
+  display: grid;
+  gap: 0.7rem;
+  padding: 0.75rem;
+}
+
+.buzzSideColumn {
+  padding: 0.75rem;
+  display: grid;
+  gap: 0.75rem;
+  align-content: flex-start;
+}
+
+.buzzResultCard,
+.buzzPomCard,
+.buzzCommentaryCard {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 0.95rem;
+}
+
+.buzzWinText {
+  margin: 0 0 0.55rem;
+  color: #105dc9;
+  font-size: 1.75rem;
+  font-weight: 800;
+}
+
+.buzzScoreRows p {
+  margin: 0;
+  font-size: clamp(1.35rem, 1.2rem + 0.5vw, 2rem);
+  font-weight: 800;
+  color: #1d232b;
+}
+
+.buzzScoreRows p + p {
+  margin-top: 0.22rem;
+}
+
+.buzzScoreRows span {
+  color: #616b7b;
+  margin-right: 0.4rem;
+}
+
+.buzzPomCard > p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #6c7382;
+  letter-spacing: 0.03em;
+  font-weight: 800;
+}
+
+.buzzPomCard > div {
+  margin-top: 0.45rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.buzzPlayerAvatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #bac4d3;
+  color: #49566c;
+  font-weight: 800;
+  background: #f4f7fc;
+}
+
+.buzzPomCard strong {
+  font-size: 1.04rem;
+}
+
+.buzzCommentaryCard h2 {
+  margin: 0 0 0.8rem;
+  font-size: 1.05rem;
+}
+
+.buzzCommentaryRow {
+  border-top: 1px solid var(--line);
+  padding: 0.62rem 0;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 0.7rem;
+}
+
+.buzzCommentaryRow:first-of-type {
+  border-top: 0;
+}
+
+.buzzCommentaryRow p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.buzzCommentaryRow p:first-child {
+  font-weight: 800;
+  color: #222a36;
+}
+
+.buzzSideCard {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 0.8rem;
+}
+
+.buzzAdMock {
+  min-height: 330px;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #e8efff, #c4d5ff);
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #1e376f;
+}
+
+.buzzSideCard h3 {
+  margin: 0 0 0.6rem;
+  color: #0b936f;
+  font-size: 1.55rem;
+}
+
+.buzzVideoMock {
+  min-height: 140px;
+  border-radius: 8px;
+  background: linear-gradient(140deg, #2e1e79, #6d2ab5);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 0.55rem;
+}
+
+.buzzSideCard p {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.55;
 }
 
 .detailsHeader {
@@ -503,6 +739,63 @@ a {
 .scoreRow span {
   font-size: 0.9rem;
   font-weight: 700;
+}
+
+.detailsInfoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.detailsInfoCard {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 0.8rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.detailsInfoCard p {
+  margin: 0;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  font-weight: 800;
+}
+
+.detailsInfoCard strong {
+  color: var(--brand-dark);
+  line-height: 1.45;
+}
+
+.commentaryList {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.commentaryCard {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 0.85rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.commentaryCard p {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.commentaryOver {
+  color: var(--brand) !important;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 800;
 }
 
 .desktopFooter {
@@ -673,7 +966,7 @@ a {
 }
 
 .authForm input:focus-visible {
-  outline: 2px solid rgba(13, 93, 79, 0.33);
+  outline: 2px solid rgba(0, 23, 95, 0.33);
   outline-offset: 0;
 }
 
@@ -755,7 +1048,7 @@ a {
 }
 
 .infoBlock a {
-  color: #0f507f;
+  color: var(--brand);
   font-weight: 700;
 }
 
@@ -783,6 +1076,24 @@ a {
   .detailsActions {
     width: 100%;
     min-width: 0;
+  }
+
+  .detailsInfoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .buzzMetaRow {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .buzzBodyGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .buzzMainColumn {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
   }
 
   .footerInner {
@@ -821,6 +1132,15 @@ a {
     font-size: 0.82rem;
   }
 
+  .buzzTabs {
+    gap: 1rem;
+  }
+
+  .buzzCommentaryRow {
+    grid-template-columns: 44px 1fr;
+    gap: 0.5rem;
+  }
+
   .desktopFooter {
     display: none;
   }
@@ -833,7 +1153,7 @@ a {
 
 @media (min-width: 641px) {
   .siteHeader {
-    background: linear-gradient(180deg, #0a6a54 0%, #0c5f4d 100%);
+    background: linear-gradient(180deg, var(--brand) 0%, var(--brand-dark) 100%);
   }
 
   .headerTop {
