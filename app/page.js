@@ -2,8 +2,8 @@ import MatchCard from '@/components/MatchCard';
 import NewsCard from '@/components/NewsCard';
 import {getMatchesData, getNewsData} from '@/lib/api';
 
-const MatchSection = ({title, subtitle, matches}) => (
-  <section className="sectionBlock">
+const MatchSection = ({id, title, subtitle, matches}) => (
+  <section className="sectionBlock" id={id}>
     <div className="sectionHeader">
       <div>
         <p className="sectionEyebrow">Match Center</p>
@@ -50,11 +50,11 @@ export default async function HomePage() {
         </div>
       </header>
 
-      <MatchSection title="Live Matches" subtitle="Real-time ongoing games" matches={matches.live} />
+      <MatchSection id="matches" title="Live Matches" subtitle="Real-time ongoing games" matches={matches.live} />
       <MatchSection title="Upcoming Matches" subtitle="Plan your watchlist" matches={matches.upcoming} />
-      <MatchSection title="Finished Matches" subtitle="Results and recap" matches={matches.finished} />
+      <MatchSection id="series" title="Finished Matches" subtitle="Results and recap" matches={matches.finished} />
 
-      <section className="sectionBlock">
+      <section className="sectionBlock" id="news">
         <div className="sectionHeader">
           <div>
             <p className="sectionEyebrow">Newsroom</p>
