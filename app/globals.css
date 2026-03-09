@@ -1,0 +1,478 @@
+:root {
+  --bg: #edf3f9;
+  --ink: #112841;
+  --ink-soft: #5e728d;
+  --surface: #ffffff;
+  --line: #d5e0ec;
+  --brand: #0d5d4f;
+  --brand-dark: #083c33;
+  --accent: #f2b533;
+  --live: #d73e3e;
+  --upcoming: #b97811;
+  --result: #1f7f54;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: 'Avenir Next', 'Segoe UI', sans-serif;
+  color: var(--ink);
+  background: linear-gradient(170deg, #f7fbff 0%, var(--bg) 45%, #eaf1f8 100%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.bgPattern {
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle at 8% 10%, rgba(13, 93, 79, 0.12), transparent 18%),
+    radial-gradient(circle at 92% 15%, rgba(16, 88, 144, 0.12), transparent 20%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.pageShell {
+  width: min(1160px, calc(100% - 2rem));
+  margin: 1.2rem auto 3rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.hero,
+.sectionBlock,
+.detailsHeader,
+.inningsCard,
+.emptyCard {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.93);
+  border-radius: 18px;
+  box-shadow: 0 14px 34px rgba(14, 40, 71, 0.08);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 1rem;
+  padding: 1.3rem;
+}
+
+.heroTag,
+.sectionEyebrow {
+  margin: 0;
+  color: var(--brand);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.hero h1,
+.detailsHeader h1 {
+  margin: 0.3rem 0;
+  font-size: clamp(1.45rem, 1.2rem + 1.25vw, 2.2rem);
+  line-height: 1.15;
+}
+
+.heroCopy {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  max-width: 58ch;
+}
+
+.heroStats {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.heroStats article {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #f7fbff;
+  padding: 0.9rem;
+}
+
+.heroStats p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-weight: 700;
+}
+
+.heroStats strong {
+  font-size: 1.85rem;
+  color: var(--brand-dark);
+}
+
+.sectionBlock {
+  padding: 1rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.sectionHeader h2 {
+  margin: 0.25rem 0 0;
+  font-size: clamp(1.1rem, 1rem + 0.4vw, 1.4rem);
+}
+
+.sectionHeader p {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.matchGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.matchCardLink {
+  display: block;
+}
+
+.matchCard {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0.9rem;
+  background: var(--surface);
+  display: grid;
+  gap: 0.7rem;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.matchCardLink:hover .matchCard {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 22px rgba(15, 42, 72, 0.1);
+}
+
+.matchTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.series {
+  margin: 0;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  font-weight: 800;
+}
+
+.statusPill {
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.66rem;
+  color: white;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.statusLive {
+  background: var(--live);
+}
+
+.statusUpcoming {
+  background: var(--upcoming);
+}
+
+.statusResult {
+  background: var(--result);
+}
+
+.teamsWrap {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.teamRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.teamRow span {
+  font-weight: 700;
+}
+
+.teamRow strong {
+  font-weight: 900;
+}
+
+.venue {
+  margin: 0;
+  color: #0f507f;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.cardCta {
+  border-top: 1px solid var(--line);
+  padding-top: 0.65rem;
+  font-weight: 800;
+  color: var(--brand);
+}
+
+.newsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.newsCardLink {
+  display: block;
+}
+
+.newsCard {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--surface);
+  display: grid;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.newsCardLink.newsFeatured {
+  grid-column: span 2;
+}
+
+.newsCardLink:hover .newsCard {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 22px rgba(15, 42, 72, 0.1);
+}
+
+.newsImage,
+.newsImagePlaceholder {
+  width: 100%;
+  height: 184px;
+  object-fit: cover;
+  background: linear-gradient(135deg, #dce9f7, #bfd4ec);
+}
+
+.newsBody {
+  padding: 0.85rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.newsMeta {
+  margin: 0;
+  color: var(--brand);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.newsBody h3 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.newsSummary {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+.newsDetailImage {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+}
+
+.newsDetailBlock {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  padding: 1rem;
+}
+
+.newsDetailBlock h2 {
+  margin: 0 0 0.45rem;
+  color: var(--brand-dark);
+  font-size: 1.1rem;
+}
+
+.newsDetailBlock p {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.75;
+  white-space: pre-wrap;
+}
+
+.detailsShell {
+  margin-top: 1.6rem;
+}
+
+.detailsHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.2rem;
+}
+
+.statusLine {
+  margin: 0.4rem 0 0;
+  color: var(--brand-dark);
+  font-weight: 800;
+}
+
+.detailsActions {
+  display: grid;
+  gap: 0.55rem;
+  min-width: 220px;
+  align-content: flex-start;
+}
+
+.primaryBtn,
+.ghostBtn {
+  border-radius: 11px;
+  padding: 0.65rem 0.8rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.primaryBtn {
+  background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+  color: white;
+}
+
+.ghostBtn {
+  border: 1px solid var(--line);
+  background: #f3f8ff;
+}
+
+.inningsCard,
+.emptyCard {
+  padding: 1rem;
+}
+
+.inningsCard {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.inningsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.inningsHeader h3,
+.inningsHeader p {
+  margin: 0;
+}
+
+.inningsHeader p {
+  color: var(--ink-soft);
+  font-weight: 700;
+}
+
+.scoreTableWrap {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.scoreTableWrap h3 {
+  margin: 0;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--brand);
+}
+
+.scoreTable {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.scoreHead,
+.scoreRow {
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) repeat(4, minmax(45px, 0.36fr));
+  gap: 0.4rem;
+  padding: 0.55rem 0.7rem;
+}
+
+.scoreHead {
+  background: #f0f6fd;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  font-weight: 800;
+}
+
+.scoreRow {
+  border-top: 1px solid var(--line);
+  align-items: center;
+}
+
+.scoreRow span {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+@media (max-width: 980px) {
+  .hero,
+  .matchGrid,
+  .newsGrid,
+  .detailsHeader {
+    grid-template-columns: 1fr;
+  }
+
+  .newsFeatured {
+    grid-column: auto;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .detailsActions {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .pageShell {
+    width: min(1160px, calc(100% - 1rem));
+  }
+
+  .scoreHead,
+  .scoreRow {
+    grid-template-columns: minmax(100px, 1fr) repeat(4, minmax(40px, 0.4fr));
+    padding: 0.5rem;
+  }
+
+  .teamRow span,
+  .teamRow strong,
+  .scoreRow span {
+    font-size: 0.82rem;
+  }
+}
