@@ -25,7 +25,7 @@ export default async function HomePage() {
 
   return (
     <main className="pageShell">
-      <header className="hero">
+      {/* <header className="hero">
         <div>
           <p className="heroTag">MyCricket Platform</p>
           <h1>One place for live scores, full scorecards and trusted cricket news.</h1>
@@ -48,7 +48,7 @@ export default async function HomePage() {
             <strong>{matches.finished.length}</strong>
           </article>
         </div>
-      </header>
+      </header> */}
 
       <MatchSection id="matches" title="Live Matches" subtitle="Real-time ongoing games" matches={matches.live} />
       <MatchSection title="Upcoming Matches" subtitle="Plan your watchlist" matches={matches.upcoming} />
