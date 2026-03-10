@@ -372,29 +372,30 @@ a {
   gap: 0.8rem;
 }
 
-.newsListColumn {
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: var(--surface);
+.sectionSeeAll {
+  color: var(--ink);
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
+.topStoriesGrid {
   display: grid;
-  align-content: flex-start;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.05rem 1.3rem;
 }
 
 .newsListItem {
   display: grid;
-  grid-template-columns: 124px 1fr;
-  gap: 0.65rem;
-  padding: 0.65rem;
-  border-top: 1px solid var(--line);
-}
-
-.newsListItem:first-child {
-  border-top: 0;
+  grid-template-columns: 196px 1fr;
+  align-items: center;
+  gap: 0.95rem;
+  text-decoration: none;
+  color: inherit;
 }
 
 .newsListThumb {
   width: 100%;
-  height: 82px;
+  height: 110px;
   border-radius: 8px;
   object-fit: cover;
   background: #d8dde3;
@@ -402,13 +403,21 @@ a {
 
 .newsListBody {
   display: grid;
-  gap: 0.3rem;
+  gap: 0.45rem;
+}
+
+.newsListMeta {
+  margin: 0;
+  color: #6a6f7b;
+  font-size: 0.9rem;
+  font-weight: 700;
 }
 
 .newsListBody h3 {
   margin: 0;
-  font-size: 0.93rem;
-  line-height: 1.35;
+  font-size: 1.08rem;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
 }
 
 .newsDetailImage {
@@ -1109,6 +1118,7 @@ a {
   .hero,
   .matchGrid,
   .newsLayout,
+  .topStoriesGrid,
   .detailsHeader {
     grid-template-columns: 1fr;
   }
@@ -1117,20 +1127,8 @@ a {
     grid-column: auto;
   }
 
-  .newsListColumn {
-    border: 0;
-    background: transparent;
-    gap: 0.6rem;
-  }
-
   .newsListItem {
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    background: var(--surface);
-  }
-
-  .newsListItem:first-child {
-    border-top: 1px solid var(--line);
+    grid-template-columns: 170px 1fr;
   }
 
   .sectionHeader {
@@ -1198,12 +1196,22 @@ a {
   }
 
   .newsListItem {
-    grid-template-columns: 108px 1fr;
-    padding: 0.55rem;
+    grid-template-columns: 124px 1fr;
+    gap: 0.65rem;
   }
 
   .newsListThumb {
-    height: 74px;
+    height: 82px;
+  }
+
+  .newsListBody h3 {
+    font-size: 1.05rem;
+    line-height: 1.3;
+    letter-spacing: 0;
+  }
+
+  .newsListMeta {
+    font-size: 0.82rem;
   }
 
   .buzzTabs {

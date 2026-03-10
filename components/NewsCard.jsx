@@ -9,7 +9,7 @@ const NewsCard = ({item, featured = false, compact = false}) => {
       <Link href={`/news/${newsId}`} className="newsListItem">
         {image ? <img src={image} alt={item.title} className="newsListThumb" /> : <div className="newsListThumb" />}
         <div className="newsListBody">
-          <p className="newsMeta">
+          <p className="newsListMeta">
             {item.tag} • {item.time}
           </p>
           <h3>{item.title}</h3>

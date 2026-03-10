@@ -1,5 +1,6 @@
 import MatchCard from '@/components/MatchCard';
 import NewsCard from '@/components/NewsCard';
+import Link from 'next/link';
 import {getMatchesData, getNewsData} from '@/lib/api';
 
 const MatchSection = ({id, title, subtitle, matches}) => (
@@ -22,7 +23,7 @@ const MatchSection = ({id, title, subtitle, matches}) => (
 
 export default async function HomePage() {
   const [matches, news] = await Promise.all([getMatchesData(), getNewsData()]);
-  const [leadStory, ...otherStories] = news;
+  const topStories = news.slice(0, 8);
 
   return (
     <main className="pageShell">
@@ -61,19 +62,15 @@ export default async function HomePage() {
             <p className="sectionEyebrow">News</p>
             <h2>Top Stories</h2>
           </div>
-          <p>Latest cricket updates</p>
+          <Link href="/#news" className="sectionSeeAll">
+            See all
+          </Link>
         </div>
 
-        <div className="newsLayout">
-          <div>
-            {leadStory ? <NewsCard item={leadStory} featured /> : null}
-          </div>
-
-          <div className="newsListColumn">
-            {otherStories.slice(0, 6).map(item => (
-              <NewsCard key={item.id} item={item} compact />
-            ))}
-          </div>
+        <div className="topStoriesGrid">
+          {topStories.map(item => (
+            <NewsCard key={item.id} item={item} compact />
+          ))}
         </div>
       </section>
     </main>
