@@ -68,10 +68,13 @@ export default function RootLayout({children}) {
           </div>
 
           <nav className="desktopNav" aria-label="Main">
-            <Link href="/#matches">Live Scores</Link>
-            <Link href="/#series">Series</Link>
-            <Link href="/#matches">Matches</Link>
+            <Link href="/">Home</Link>
+            <Link href="/#matches">Live Score</Link>
+            <Link href="/upcoming-series">Shedule</Link>
             <Link href="/#news">News</Link>
+            <Link href="/browse-series">Series</Link>
+            <Link href="/browse-team">Teams</Link>
+            <Link href="/ranking">Ranking</Link>
           </nav>
         </header>
         <div className="siteContent">{children}</div>
