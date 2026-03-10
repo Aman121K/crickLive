@@ -42,7 +42,7 @@ a {
 }
 
 .pageShell {
-  width: calc(100% - 1rem);
+  width: min(1180px, calc(100% - 2rem));
   margin: 1.2rem auto 3rem;
   display: grid;
   gap: 1rem;
@@ -56,13 +56,13 @@ a {
   position: sticky;
   top: 0;
   z-index: 70;
-  background: var(--brand);
+  background: #00175f;
   color: #ffffff;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
 }
 
 .headerTop {
-  width: calc(100% - 1.5rem);
+  width: min(1180px, calc(100% - 2rem));
   margin: 0 auto;
   min-height: 64px;
   display: grid;
@@ -1373,13 +1373,17 @@ a {
 
 @media (min-width: 641px) {
   .siteHeader {
-    background: linear-gradient(180deg, var(--brand) 0%, var(--brand-dark) 100%);
+    background: transparent;
+    box-shadow: none;
   }
 
   .headerTop {
     grid-template-columns: 1fr auto auto;
     min-height: 70px;
-    width: calc(100% - 2rem);
+    width: min(1180px, calc(100% - 2rem));
+    background: #00175f;
+    padding: 0 1rem;
+    border-radius: 0;
   }
 
   .menuBtn {
@@ -1391,14 +1395,16 @@ a {
   }
 
   .desktopNav {
-    width: calc(100% - 2rem);
+    width: min(1180px, calc(100% - 2rem));
     margin: 0 auto;
     min-height: 44px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 1.6rem;
     border-top: 1px solid rgba(255, 255, 255, 0.22);
+    background: #00175f;
+    padding: 0 1rem;
     overflow-x: auto;
     white-space: nowrap;
     scrollbar-width: none;
