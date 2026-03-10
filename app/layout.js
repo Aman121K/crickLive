@@ -60,8 +60,8 @@ export default function RootLayout({children}) {
               </svg>
             </button>
 
-            <Link href="/" className="brandLogo" aria-label="Cricbuzz home">
-              cricbuzz
+            <Link href="/" className="brandLogo" aria-label="Criclive home">
+              criclive
             </Link>
 
             <AuthHeaderAction />
@@ -82,7 +82,7 @@ export default function RootLayout({children}) {
         <footer className="desktopFooter">
           <div className="footerInner">
             <div className="footerCol footerBrand">
-              <h3>cricbuzz</h3>
+              <h3>criclive</h3>
               <p>Live scores, scorecards, stories and match updates in one place.</p>
             </div>
 
@@ -114,7 +114,7 @@ export default function RootLayout({children}) {
             </div>
           </div>
           <p className="footerCopy">
-            © 2026 Cricbuzz Platforms Limited. All rights reserved. Unauthorized use, reproduction, or distribution
+            © 2026 Criclive Platforms Limited. All rights reserved. Unauthorized use, reproduction, or distribution
             of content is prohibited.
           </p>
         </footer>
