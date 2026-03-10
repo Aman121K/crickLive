@@ -4,8 +4,8 @@
   --ink-soft: #48494a;
   --surface: #ffffff;
   --line: #e3e3e3;
-  --brand: #047e69;
-  --brand-dark: #026956;
+  --brand: #009270;
+  --brand-dark: #007a61;
   --accent: #3d3d3d;
   --live: #d73e3e;
   --upcoming: #b77610;
@@ -42,7 +42,7 @@ a {
 }
 
 .pageShell {
-  width: min(1160px, calc(100% - 2rem));
+  width: calc(100% - 1rem);
   margin: 1.2rem auto 3rem;
   display: grid;
   gap: 1rem;
@@ -62,7 +62,7 @@ a {
 }
 
 .headerTop {
-  width: min(1160px, calc(100% - 1rem));
+  width: calc(100% - 1.5rem);
   margin: 0 auto;
   min-height: 64px;
   display: grid;
@@ -204,6 +204,35 @@ a {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 0.8rem;
+}
+
+.matchGridHorizontal {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(300px, 360px);
+  gap: 0.8rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  padding-bottom: 0.2rem;
+}
+
+.matchGridHorizontal .matchCardLink {
+  scroll-snap-align: start;
+}
+
+.matchGridHorizontal::-webkit-scrollbar {
+  height: 8px;
+}
+
+.matchGridHorizontal::-webkit-scrollbar-track {
+  background: #ebebeb;
+  border-radius: 999px;
+}
+
+.matchGridHorizontal::-webkit-scrollbar-thumb {
+  background: #bec4ca;
+  border-radius: 999px;
 }
 
 .matchCardLink {
@@ -348,11 +377,11 @@ a {
 
 .newsMeta {
   margin: 0;
-  color: var(--brand);
-  font-size: 0.72rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  color: #6a6f7b;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 .newsBody h3 {
@@ -389,7 +418,7 @@ a {
 .newsListItem {
   display: grid;
   grid-template-columns: 196px 1fr;
-  align-items: center;
+  align-items: start;
   gap: 0.95rem;
   text-decoration: none;
   color: inherit;
@@ -461,22 +490,22 @@ a {
 .buzzHeaderCard {
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.96);
-  border-radius: 14px;
+  border-radius: 6px;
   overflow: hidden;
 }
 
 .buzzHeaderCard h1 {
   margin: 0;
-  padding: 1rem 1.15rem 0.3rem;
-  font-size: clamp(1.25rem, 1.1rem + 0.8vw, 2rem);
-  line-height: 1.25;
+  padding: 1rem 1rem 0.2rem;
+  font-size: clamp(1.2rem, 1.08rem + 0.55vw, 1.55rem);
+  line-height: 1.2;
 }
 
 .buzzMetaRow {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.7rem;
-  padding: 0.25rem 1.15rem 1rem;
+  padding: 0.2rem 1rem 0.85rem;
 }
 
 .buzzMetaRow p {
@@ -492,21 +521,21 @@ a {
 .buzzTabs {
   display: flex;
   align-items: center;
-  gap: 1.35rem;
+  gap: 1.1rem;
   overflow-x: auto;
   white-space: nowrap;
   border-top: 1px solid var(--line);
-  padding: 0 1.15rem;
-  min-height: 52px;
+  padding: 0 1rem;
+  min-height: 46px;
 }
 
 .buzzTabs a,
 .buzzTabs button {
   position: relative;
-  color: #1c273b;
-  font-size: 1.02rem;
-  font-weight: 600;
-  padding: 0.8rem 0;
+  color: #1f2737;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.68rem 0;
   background: transparent;
   border: 0;
   cursor: pointer;
@@ -515,8 +544,8 @@ a {
 
 .buzzTabs a.active,
 .buzzTabs button.active {
-  color: #028b6b;
-  font-weight: 700;
+  color: var(--brand);
+  font-weight: 600;
 }
 
 .buzzTabs a.active::after,
@@ -526,8 +555,8 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 4px;
-  background: #11a37f;
+  height: 3px;
+  background: var(--brand);
 }
 
 .buzzTabs button:focus-visible {
@@ -688,6 +717,99 @@ a {
   margin: 0;
   color: var(--ink-soft);
   line-height: 1.55;
+}
+
+.buzzInfoCard {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.buzzInfoHeader {
+  background: #dcebe6;
+  color: #5f676f;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 0.65rem 0.9rem;
+  line-height: 1;
+}
+
+.buzzInfoTable {
+  display: grid;
+}
+
+.buzzInfoRow {
+  display: grid;
+  grid-template-columns: minmax(140px, 0.38fr) minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: start;
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.buzzInfoRow:last-child {
+  border-bottom: 0;
+}
+
+.buzzInfoRow p,
+.buzzInfoRow strong {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.buzzInfoRow p {
+  color: #1f2737;
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+.buzzInfoRow strong {
+  color: #1f2737;
+  font-size: 0.98rem;
+  font-weight: 500;
+}
+
+/* Match details page typography: keep it consistent with Home and reduce heavy bold usage. */
+.detailsBuzzShell .buzzHeaderCard h1 {
+  font-weight: 600;
+}
+
+.detailsBuzzShell .buzzMetaRow p {
+  font-weight: 500;
+}
+
+.detailsBuzzShell .buzzMetaRow strong {
+  font-weight: 600;
+}
+
+.detailsBuzzShell .buzzTabs a,
+.detailsBuzzShell .buzzTabs button {
+  font-weight: 500;
+}
+
+.detailsBuzzShell .buzzTabs a.active,
+.detailsBuzzShell .buzzTabs button.active {
+  font-weight: 600;
+}
+
+.detailsBuzzShell .buzzWinText,
+.detailsBuzzShell .buzzScoreRows p,
+.detailsBuzzShell .buzzPomCard > p,
+.detailsBuzzShell .buzzCommentaryRow p:first-child,
+.detailsBuzzShell .buzzAdMock {
+  font-weight: 600;
+}
+
+.detailsBuzzShell .buzzPlayerAvatar,
+.detailsBuzzShell .buzzPomCard strong {
+  font-weight: 500;
+}
+
+.detailsBuzzShell .buzzSideCard h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
 .detailsHeader {
@@ -889,7 +1011,7 @@ a {
 .footerCol h3,
 .footerCol h4 {
   margin: 0;
-  font-weight: 800;
+  font-weight: 400;
 }
 
 .footerCol h3 {
@@ -906,7 +1028,7 @@ a {
 
 .footerCol a {
   color: #ececec;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 0.82rem;
 }
 
@@ -1162,14 +1284,23 @@ a {
     border-bottom: 1px solid var(--line);
   }
 
+  .buzzInfoRow {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+
   .footerInner {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .matchGridHorizontal {
+    grid-auto-columns: minmax(300px, 82vw);
   }
 }
 
 @media (max-width: 640px) {
   .headerTop {
-    width: min(1160px, calc(100% - 0.8rem));
+    width: calc(100% - 0.8rem);
     min-height: 58px;
   }
 
@@ -1182,7 +1313,7 @@ a {
   }
 
   .pageShell {
-    width: min(1160px, calc(100% - 1rem));
+    width: calc(100% - 0.8rem);
     margin-bottom: 5.2rem;
   }
 
@@ -1217,6 +1348,10 @@ a {
     font-size: 0.82rem;
   }
 
+  .matchGridHorizontal {
+    grid-auto-columns: minmax(280px, 88vw);
+  }
+
   .buzzTabs {
     gap: 1rem;
   }
@@ -1244,6 +1379,7 @@ a {
   .headerTop {
     grid-template-columns: 1fr auto auto;
     min-height: 70px;
+    width: calc(100% - 2rem);
   }
 
   .menuBtn {
@@ -1255,21 +1391,27 @@ a {
   }
 
   .desktopNav {
-    width: min(1160px, calc(100% - 1rem));
+    width: calc(100% - 2rem);
     margin: 0 auto;
     min-height: 44px;
     display: flex;
     align-items: center;
-    gap: 1.2rem;
+    justify-content: center;
+    gap: 1.6rem;
     border-top: 1px solid rgba(255, 255, 255, 0.22);
     overflow-x: auto;
     white-space: nowrap;
+    scrollbar-width: none;
+  }
+
+  .desktopNav::-webkit-scrollbar {
+    display: none;
   }
 
   .desktopNav a {
-    font-size: 0.95rem;
-    font-weight: 700;
+    font-size: 0.96rem;
+    font-weight: 600;
     color: rgba(255, 255, 255, 0.95);
-    padding: 0.2rem 0;
+    padding: 0.3rem 0;
   }
 }

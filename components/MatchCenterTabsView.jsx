@@ -103,19 +103,31 @@ const MatchCenterTabsView = ({scorecard}) => {
 
   const overs = useMemo(() => commentary.slice(0, 20), [commentary]);
 
+  const infoRows = useMemo(() => {
+    const baseRows = [
+      {label: 'Match', value: scorecard?.title || '-'},
+      ...info.map(item => ({label: item.label, value: item.value})),
+    ];
+
+    const seen = new Set();
+    return baseRows.filter(row => {
+      const key = String(row.label || '').trim().toLowerCase();
+      if (!key || seen.has(key)) {
+        return false;
+      }
+      seen.add(key);
+      return Boolean(String(row.value || '').trim());
+    });
+  }, [info, scorecard?.title]);
+
   const renderMainPanel = () => {
     if (activeTab === 'info') {
       return (
-        <section className="sectionBlock">
-          <div className="sectionHeader">
-            <div>
-              <p className="sectionEyebrow">Match Information</p>
-              <h2>Information</h2>
-            </div>
-          </div>
-          <div className="detailsInfoGrid">
-            {info.map(item => (
-              <article key={item.id} className="detailsInfoCard">
+        <section className="buzzInfoCard">
+          <div className="buzzInfoHeader">INFO</div>
+          <div className="buzzInfoTable">
+            {infoRows.map(item => (
+              <article key={item.label} className="buzzInfoRow">
                 <p>{item.label}</p>
                 <strong>{item.value}</strong>
               </article>
@@ -382,9 +394,9 @@ const MatchCenterTabsView = ({scorecard}) => {
             <div className="buzzVideoMock">Match Analysis Video</div>
             <p>Latest cricket highlights and post-match analysis from the newsroom.</p>
           </article>
-          <Link href="/" className="ghostBtn">
+          {/* <Link href="/" className="ghostBtn">
             Back to Dashboard
-          </Link>
+          </Link> */}
         </aside>
       </div>
     </main>

@@ -3,7 +3,7 @@ import NewsCard from '@/components/NewsCard';
 import Link from 'next/link';
 import {getMatchesData, getNewsData} from '@/lib/api';
 
-const MatchSection = ({id, title, subtitle, matches}) => (
+const MatchSection = ({id, title, subtitle, matches, horizontal = false}) => (
   <section className="sectionBlock" id={id}>
     <div className="sectionHeader">
       <div>
@@ -13,7 +13,7 @@ const MatchSection = ({id, title, subtitle, matches}) => (
       <p>{subtitle}</p>
     </div>
 
-    <div className="matchGrid">
+    <div className={horizontal ? 'matchGridHorizontal' : 'matchGrid'}>
       {matches.map(match => (
         <MatchCard key={match.id} match={match} />
       ))}
@@ -52,7 +52,7 @@ export default async function HomePage() {
         </div>
       </header> */}
 
-      <MatchSection id="matches" title="Live Matches" subtitle="Real-time ongoing games" matches={matches.live} />
+      <MatchSection id="matches" title="Live Matches" subtitle="" matches={matches.live} horizontal />
 
       <section className="sectionBlock" id="news">
         <div className="sectionHeader">

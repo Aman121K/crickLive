@@ -10,6 +10,7 @@ const NewsCard = ({item, featured = false, compact = false}) => {
       content: item.content || '',
       tag: item.tag || 'NEWS',
       time: item.time || 'Recently',
+      author: item.author || 'Staff Writer',
       imageUrl: item.imageUrl || '',
       thumbnailUrl: item.thumbnailUrl || '',
     })
@@ -24,10 +25,10 @@ const NewsCard = ({item, featured = false, compact = false}) => {
       <Link href={detailHref} className="newsListItem">
         {image ? <img src={image} alt={item.title} className="newsListThumb" /> : <div className="newsListThumb" />}
         <div className="newsListBody">
-          <p className="newsListMeta">
-            {item.tag} • {item.time}
-          </p>
           <h3>{item.title}</h3>
+          <p className="newsListMeta">
+            {item.time} • {item.author || 'Staff Writer'}
+          </p>
         </div>
       </Link>
     );
@@ -38,10 +39,10 @@ const NewsCard = ({item, featured = false, compact = false}) => {
       <article className="newsCard">
         {image ? <img src={image} alt={item.title} className="newsImage" /> : <div className="newsImagePlaceholder" />}
         <div className="newsBody">
-          <p className="newsMeta">
-            {item.tag} • {item.time}
-          </p>
           <h3>{item.title}</h3>
+          <p className="newsMeta">
+            {item.time} • {item.author || 'Staff Writer'}
+          </p>
           {item.summary ? <p className="newsSummary">{item.summary}</p> : null}
         </div>
       </article>
