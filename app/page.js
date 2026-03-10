@@ -53,8 +53,6 @@ export default async function HomePage() {
       </header> */}
 
       <MatchSection id="matches" title="Live Matches" subtitle="Real-time ongoing games" matches={matches.live} />
-      <MatchSection title="Upcoming Matches" subtitle="Plan your watchlist" matches={matches.upcoming} />
-      <MatchSection id="series" title="Finished Matches" subtitle="Results and recap" matches={matches.finished} />
 
       <section className="sectionBlock" id="news">
         <div className="sectionHeader">
@@ -62,7 +60,7 @@ export default async function HomePage() {
             <p className="sectionEyebrow">News</p>
             <h2>Top Stories</h2>
           </div>
-          <Link href="/#news" className="sectionSeeAll">
+          <Link href="/news" className="sectionSeeAll">
             See all
           </Link>
         </div>

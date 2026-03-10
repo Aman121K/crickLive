@@ -2,9 +2,23 @@ import Link from 'next/link';
 import {notFound} from 'next/navigation';
 import {getNewsDetails} from '@/lib/api';
 
-export default async function NewsDetailsPage({params}) {
+const parseSelectedNews = value => {
+  if (!value || typeof value !== 'string') {
+    return null;
+  }
+
+  try {
+    return JSON.parse(decodeURIComponent(value));
+  } catch {
+    return null;
+  }
+};
+
+export default async function NewsDetailsPage({params, searchParams}) {
   const newsId = decodeURIComponent(String(params?.newsId || ''));
-  const news = await getNewsDetails(newsId);
+  const selectedNews = parseSelectedNews(searchParams?.selected);
+  const apiNews = selectedNews ? null : await getNewsDetails(newsId);
+  const news = selectedNews || apiNews;
 
   if (!news) {
     notFound();

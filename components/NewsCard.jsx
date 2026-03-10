@@ -3,10 +3,25 @@ import Link from 'next/link';
 const NewsCard = ({item, featured = false, compact = false}) => {
   const image = item.imageUrl || item.thumbnailUrl;
   const newsId = encodeURIComponent(String(item.id || 'news'));
+  const selectedNewsPayload = encodeURIComponent(
+    JSON.stringify({
+      title: item.title || '',
+      summary: item.summary || '',
+      content: item.content || '',
+      tag: item.tag || 'NEWS',
+      time: item.time || 'Recently',
+      imageUrl: item.imageUrl || '',
+      thumbnailUrl: item.thumbnailUrl || '',
+    })
+  );
+  const detailHref = {
+    pathname: `/news/${newsId}`,
+    query: {selected: selectedNewsPayload},
+  };
 
   if (compact) {
     return (
-      <Link href={`/news/${newsId}`} className="newsListItem">
+      <Link href={detailHref} className="newsListItem">
         {image ? <img src={image} alt={item.title} className="newsListThumb" /> : <div className="newsListThumb" />}
         <div className="newsListBody">
           <p className="newsListMeta">
@@ -19,7 +34,7 @@ const NewsCard = ({item, featured = false, compact = false}) => {
   }
 
   return (
-    <Link href={`/news/${newsId}`} className={`newsCardLink ${featured ? 'newsFeatured' : ''}`}>
+    <Link href={detailHref} className={`newsCardLink ${featured ? 'newsFeatured' : ''}`}>
       <article className="newsCard">
         {image ? <img src={image} alt={item.title} className="newsImage" /> : <div className="newsImagePlaceholder" />}
         <div className="newsBody">

@@ -29,7 +29,7 @@ const mobileTabs = [
   },
   {
     label: 'Series',
-    href: '/#series',
+    href: '/browse-series',
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M6 4h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.2L12 21l-1.8-3H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm1 3v2h10V7H7Zm0 4v2h10v-2H7Z" />
