@@ -22,6 +22,7 @@ const MatchSection = ({id, title, subtitle, matches}) => (
 
 export default async function HomePage() {
   const [matches, news] = await Promise.all([getMatchesData(), getNewsData()]);
+  const [leadStory, ...otherStories] = news;
 
   return (
     <main className="pageShell">
@@ -57,16 +58,22 @@ export default async function HomePage() {
       <section className="sectionBlock" id="news">
         <div className="sectionHeader">
           <div>
-            <p className="sectionEyebrow">Newsroom</p>
-            <h2>Admin + App News Feed</h2>
+            <p className="sectionEyebrow">News</p>
+            <h2>Top Stories</h2>
           </div>
-          <p>Published stories synced from your backend</p>
+          <p>Latest cricket updates</p>
         </div>
 
-        <div className="newsGrid">
-          {news.map((item, index) => (
-            <NewsCard key={item.id} item={item} featured={index === 0} />
-          ))}
+        <div className="newsLayout">
+          <div>
+            {leadStory ? <NewsCard item={leadStory} featured /> : null}
+          </div>
+
+          <div className="newsListColumn">
+            {otherStories.slice(0, 6).map(item => (
+              <NewsCard key={item.id} item={item} compact />
+            ))}
+          </div>
         </div>
       </section>
     </main>

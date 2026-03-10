@@ -1,15 +1,15 @@
 :root {
-  --bg: #edf3f9;
-  --ink: #112841;
-  --ink-soft: #5e728d;
+  --bg: #f1f1f1;
+  --ink: #121212;
+  --ink-soft: #48494a;
   --surface: #ffffff;
-  --line: #d5e0ec;
-  --brand: #00175f;
-  --brand-dark: #000f3f;
-  --accent: #2f4db0;
+  --line: #e3e3e3;
+  --brand: #047e69;
+  --brand-dark: #026956;
+  --accent: #3d3d3d;
   --live: #d73e3e;
-  --upcoming: #b97811;
-  --result: #1f7f54;
+  --upcoming: #b77610;
+  --result: #1b7c52;
 }
 
 * {
@@ -21,9 +21,9 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100%;
-  font-family: 'Avenir Next', 'Segoe UI', sans-serif;
+  font-family: 'Benton Sans', BentonSans, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: var(--ink);
-  background: linear-gradient(170deg, #f7fbff 0%, var(--bg) 45%, #eaf1f8 100%);
+  background: var(--bg);
 }
 
 body {
@@ -37,12 +37,7 @@ a {
 }
 
 .bgPattern {
-  position: fixed;
-  inset: 0;
-  background-image: radial-gradient(circle at 8% 10%, rgba(0, 23, 95, 0.14), transparent 18%),
-    radial-gradient(circle at 92% 15%, rgba(0, 23, 95, 0.10), transparent 20%);
-  pointer-events: none;
-  z-index: -1;
+  display: none;
 }
 
 .pageShell {
@@ -122,9 +117,9 @@ a {
 .inningsCard,
 .emptyCard {
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.93);
-  border-radius: 18px;
-  box-shadow: 0 14px 34px rgba(14, 40, 71, 0.08);
+  background: var(--surface);
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .hero {
@@ -196,7 +191,7 @@ a {
 
 .sectionHeader h2 {
   margin: 0.25rem 0 0;
-  font-size: clamp(1.1rem, 1rem + 0.4vw, 1.4rem);
+  font-size: clamp(1.08rem, 1rem + 0.34vw, 1.3rem);
 }
 
 .sectionHeader p {
@@ -206,7 +201,7 @@ a {
 
 .matchGrid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 0.8rem;
 }
 
@@ -216,17 +211,18 @@ a {
 
 .matchCard {
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: 10px;
   padding: 0.9rem;
   background: var(--surface);
   display: grid;
   gap: 0.7rem;
+  min-height: 205px;
   transition: transform 140ms ease, box-shadow 140ms ease;
 }
 
 .matchCardLink:hover .matchCard {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 22px rgba(15, 42, 72, 0.1);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 .matchTop {
@@ -240,18 +236,18 @@ a {
   margin: 0;
   color: var(--ink-soft);
   text-transform: uppercase;
-  font-size: 0.72rem;
-  letter-spacing: 0.05em;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
   font-weight: 800;
 }
 
 .statusPill {
-  border-radius: 999px;
-  padding: 0.25rem 0.6rem;
-  font-size: 0.66rem;
+  border-radius: 4px;
+  padding: 0.2rem 0.45rem;
+  font-size: 0.64rem;
   color: white;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
 }
 
 .statusLive {
@@ -279,30 +275,38 @@ a {
 
 .teamRow span {
   font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.teamIdentity {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.teamIdentity i {
+  font-style: normal;
+  line-height: 1;
 }
 
 .teamRow strong {
   font-weight: 900;
+  font-size: 0.95rem;
 }
 
 .venue {
   margin: 0;
-  color: var(--brand);
-  font-size: 0.8rem;
-  font-weight: 700;
+  color: #666;
+  font-size: 0.78rem;
+  font-weight: 600;
 }
 
 .cardCta {
   border-top: 1px solid var(--line);
   padding-top: 0.65rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--brand);
-}
-
-.newsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.8rem;
+  font-size: 0.82rem;
 }
 
 .newsCardLink {
@@ -311,7 +315,7 @@ a {
 
 .newsCard {
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: 10px;
   overflow: hidden;
   background: var(--surface);
   display: grid;
@@ -319,20 +323,20 @@ a {
 }
 
 .newsCardLink.newsFeatured {
-  grid-column: span 2;
+  height: 100%;
 }
 
 .newsCardLink:hover .newsCard {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 22px rgba(15, 42, 72, 0.1);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 .newsImage,
 .newsImagePlaceholder {
   width: 100%;
-  height: 184px;
+  height: 224px;
   object-fit: cover;
-  background: linear-gradient(135deg, #dce9f7, #bfd4ec);
+  background: #d8dde3;
 }
 
 .newsBody {
@@ -360,6 +364,51 @@ a {
   margin: 0;
   color: var(--ink-soft);
   line-height: 1.5;
+}
+
+.newsLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(330px, 1fr);
+  gap: 0.8rem;
+}
+
+.newsListColumn {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  display: grid;
+  align-content: flex-start;
+}
+
+.newsListItem {
+  display: grid;
+  grid-template-columns: 124px 1fr;
+  gap: 0.65rem;
+  padding: 0.65rem;
+  border-top: 1px solid var(--line);
+}
+
+.newsListItem:first-child {
+  border-top: 0;
+}
+
+.newsListThumb {
+  width: 100%;
+  height: 82px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #d8dde3;
+}
+
+.newsListBody {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.newsListBody h3 {
+  margin: 0;
+  font-size: 0.93rem;
+  line-height: 1.35;
 }
 
 .newsDetailImage {
@@ -1059,13 +1108,29 @@ a {
 @media (max-width: 980px) {
   .hero,
   .matchGrid,
-  .newsGrid,
+  .newsLayout,
   .detailsHeader {
     grid-template-columns: 1fr;
   }
 
   .newsFeatured {
     grid-column: auto;
+  }
+
+  .newsListColumn {
+    border: 0;
+    background: transparent;
+    gap: 0.6rem;
+  }
+
+  .newsListItem {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--surface);
+  }
+
+  .newsListItem:first-child {
+    border-top: 1px solid var(--line);
   }
 
   .sectionHeader {
@@ -1130,6 +1195,15 @@ a {
   .teamRow strong,
   .scoreRow span {
     font-size: 0.82rem;
+  }
+
+  .newsListItem {
+    grid-template-columns: 108px 1fr;
+    padding: 0.55rem;
+  }
+
+  .newsListThumb {
+    height: 74px;
   }
 
   .buzzTabs {
