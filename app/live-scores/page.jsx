@@ -2,34 +2,34 @@ import MatchCard from '@/components/MatchCard';
 import {getMatchesData} from '@/lib/api';
 
 export const metadata = {
-  title: 'Upcoming Series | MyCricket Web',
-  description: 'Latest upcoming cricket matches and series.',
+  title: 'Live Scores | MyCricket Web',
+  description: 'Latest live cricket matches and scores.',
 };
 
-const UpcomingSeriesPage = async () => {
+const LiveScoresPage = async () => {
   const matches = await getMatchesData();
-  const upcoming = matches?.upcoming || [];
+  const liveMatches = matches?.live || [];
 
   return (
     <main className="pageShell">
       <section className="sectionBlock">
         <div className="sectionHeader">
           <div>
-            <p className="sectionEyebrow">Schedule</p>
-            <h2>Upcoming Matches</h2>
+            <p className="sectionEyebrow">Live Score</p>
+            <h2>Live Matches</h2>
           </div>
-          <p>Latest fixtures</p>
+          <p>Currently live</p>
         </div>
 
-        {upcoming.length ? (
+        {liveMatches.length ? (
           <div className="matchListVertical">
-            {upcoming.map(match => (
+            {liveMatches.map(match => (
               <MatchCard key={match.id} match={match} />
             ))}
           </div>
         ) : (
           <article className="emptyCard">
-            <p>No upcoming matches available right now.</p>
+            <p>No live matches available right now.</p>
           </article>
         )}
       </section>
@@ -37,4 +37,4 @@ const UpcomingSeriesPage = async () => {
   );
 };
 
-export default UpcomingSeriesPage;
+export default LiveScoresPage;

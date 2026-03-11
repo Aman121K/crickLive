@@ -25,6 +25,7 @@ export default async function NewsDetailsPage({params, searchParams}) {
   }
 
   const image = news.imageUrl || news.thumbnailUrl;
+  const contentHtml = String(news.content || '').trim();
 
   return (
     <main className="pageShell detailsShell">
@@ -46,16 +47,13 @@ export default async function NewsDetailsPage({params, searchParams}) {
       <section className="sectionBlock">
         {image ? <img src={image} alt={news.title} className="newsDetailImage" /> : null}
 
-        {news.summary ? (
-          <article className="newsDetailBlock">
-            <h2>Summary</h2>
-            <p>{news.summary}</p>
-          </article>
-        ) : null}
-
         <article className="newsDetailBlock">
           <h2>Full Details</h2>
-          <p>{news.content || news.summary || 'Full details are not available for this news item yet.'}</p>
+          {contentHtml ? (
+            <div className="newsDetailRichContent" dangerouslySetInnerHTML={{__html: contentHtml}} />
+          ) : (
+            <p>Full details are not available for this news item yet.</p>
+          )}
         </article>
       </section>
     </main>

@@ -54,12 +54,12 @@ const tabs = [
   {id: 'info', label: 'Info'},
   {id: 'live', label: 'Live'},
   {id: 'scorecard', label: 'Scorecard'},
-  {id: 'squads', label: 'Squads'},
-  {id: 'points', label: 'Points Table'},
-  {id: 'overs', label: 'Overs'},
-  {id: 'highlights', label: 'Highlights'},
-  {id: 'fullCommentary', label: 'Full Commentary'},
-  {id: 'news', label: 'News'},
+  // {id: 'squads', label: 'Squads'},
+  // {id: 'points', label: 'Points Table'},
+  // {id: 'overs', label: 'Overs'},
+  // {id: 'highlights', label: 'Highlights'},
+  // {id: 'fullCommentary', label: 'Full Commentary'},
+  // {id: 'news', label: 'News'},
 ];
 
 const MatchCenterTabsView = ({scorecard}) => {

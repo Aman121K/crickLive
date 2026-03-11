@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import AuthHeaderAction from '@/components/AuthHeaderAction';
+import SiteHeader from '@/components/SiteHeader';
 import './globals.css';
 
 export const metadata = {
@@ -20,7 +20,7 @@ const mobileTabs = [
   },
   {
     label: 'Matches',
-    href: '/#matches',
+    href: '/live-scores',
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M9.8 3.1a7.2 7.2 0 0 0-5 2.4A7.1 7.1 0 0 0 9 17.7l6.7-12.1A7.2 7.2 0 0 0 9.8 3.1Zm4.6 3.2L7.7 18.4a7.1 7.1 0 0 0 9.8-9.4 6.9 6.9 0 0 0-3.1-2.7Z" />
@@ -38,7 +38,7 @@ const mobileTabs = [
   },
   {
     label: 'News',
-    href: '/#news',
+    href: '/?view=news',
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M5 4h14a1 1 0 0 1 1 1v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 1-2Zm2 3v2h10V7H7Zm0 4v2h10v-2H7Zm0 4v2h6v-2H7Z" />
@@ -52,31 +52,7 @@ export default function RootLayout({children}) {
     <html lang="en">
       <body>
         <div className="bgPattern" />
-        <header className="siteHeader">
-          <div className="headerTop">
-            <button className="menuBtn" type="button" aria-label="Open menu">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M3 6h18v2H3V6Zm0 5h18v2H3v-2Zm0 5h18v2H3v-2Z" />
-              </svg>
-            </button>
-
-            <Link href="/" className="brandLogo" aria-label="Criclive home">
-              criclive
-            </Link>
-
-            <AuthHeaderAction />
-          </div>
-
-          <nav className="desktopNav" aria-label="Main">
-            <Link href="/">Home</Link>
-            <Link href="/#matches">Live Score</Link>
-            <Link href="/upcoming-series">Shedule</Link>
-            <Link href="/#news">News</Link>
-            <Link href="/browse-series">Series</Link>
-            <Link href="/browse-team">Teams</Link>
-            <Link href="/ranking">Ranking</Link>
-          </nav>
-        </header>
+        <SiteHeader />
         <div className="siteContent">{children}</div>
 
         <footer className="desktopFooter">
@@ -86,13 +62,13 @@ export default function RootLayout({children}) {
               <p>Live scores, scorecards, stories and match updates in one place.</p>
             </div>
 
-            <div className="footerCol">
+            <div className="footerCol footerApps">
               <h4>Apps</h4>
               <a href="#">Android</a>
               <a href="#">iOS</a>
             </div>
 
-            <div className="footerCol">
+            <div className="footerCol footerFollow">
               <h4>Follow Us</h4>
               <a href="#">Facebook</a>
               <a href="#">Twitter</a>
@@ -100,7 +76,7 @@ export default function RootLayout({children}) {
               <a href="#">Pinterest</a>
             </div>
 
-            <div className="footerCol">
+            <div className="footerCol footerMore">
               <h4>More</h4>
               <Link href="/browse-series">Browse Series</Link>
               <Link href="/browse-team">Browse Team</Link>

@@ -1,6 +1,7 @@
 import MatchCard from '@/components/MatchCard';
 import NewsCard from '@/components/NewsCard';
 import Link from 'next/link';
+import {redirect} from 'next/navigation';
 import {getMatchesData, getNewsData} from '@/lib/api';
 
 const MatchSection = ({id, title, subtitle, matches, horizontal = false}) => (
@@ -13,7 +14,7 @@ const MatchSection = ({id, title, subtitle, matches, horizontal = false}) => (
       <p>{subtitle}</p>
     </div>
 
-    <div className={horizontal ? 'matchGridHorizontal' : 'matchGrid'}>
+    <div className={horizontal ? 'matchGridHorizontal' : 'matchListVertical'}>
       {matches.map(match => (
         <MatchCard key={match.id} match={match} />
       ))}
@@ -21,9 +22,24 @@ const MatchSection = ({id, title, subtitle, matches, horizontal = false}) => (
   </section>
 );
 
-export default async function HomePage() {
+const parseView = searchParams => {
+  const raw = Array.isArray(searchParams?.view) ? searchParams.view[0] : searchParams?.view;
+  const value = String(raw || '').trim().toLowerCase();
+  if (value === 'matches' || value === 'news') {
+    return value;
+  }
+  return 'all';
+};
+
+export default async function HomePage({searchParams}) {
+  const view = parseView(searchParams);
+  if (view === 'matches') {
+    redirect('/live-scores');
+  }
+
   const [matches, news] = await Promise.all([getMatchesData(), getNewsData()]);
   const topStories = news.slice(0, 8);
+  const homeLiveCards = matches.live || [];
 
   return (
     <main className="pageShell">
@@ -52,25 +68,29 @@ export default async function HomePage() {
         </div>
       </header> */}
 
-      <MatchSection id="matches" title="Live Matches" subtitle="" matches={matches.live} horizontal />
+      {view !== 'news' ? (
+        <MatchSection id="matches" title="Live Matches" subtitle="" matches={homeLiveCards} horizontal />
+      ) : null}
 
-      <section className="sectionBlock" id="news">
-        <div className="sectionHeader">
-          <div>
-            <p className="sectionEyebrow">News</p>
-            <h2>Top Stories</h2>
+      {view !== 'matches' ? (
+        <section className="sectionBlock" id="news">
+          <div className="sectionHeader">
+            <div>
+              {/* <p className="sectionEyebrow">News</p> */}
+              <h2>News</h2>
+            </div>
+            <Link href="/news" className="sectionSeeAll">
+              See all
+            </Link>
           </div>
-          <Link href="/news" className="sectionSeeAll">
-            See all
-          </Link>
-        </div>
 
-        <div className="topStoriesGrid">
-          {topStories.map(item => (
-            <NewsCard key={item.id} item={item} compact />
-          ))}
-        </div>
-      </section>
+          <div className="topStoriesGrid">
+            {topStories.map(item => (
+              <NewsCard key={item.id} item={item} compact />
+            ))}
+          </div>
+        </section>
+      ) : null}
     </main>
   );
 }

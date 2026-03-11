@@ -10,6 +10,8 @@
   --live: #d73e3e;
   --upcoming: #b77610;
   --result: #1b7c52;
+  --nav-bg: #00175f;
+  --nav-bg-dark: #000f46;
 }
 
 * {
@@ -109,6 +111,11 @@ a {
 }
 
 .desktopNav {
+  display: none;
+}
+
+.mobileMenuOverlay,
+.mobileMenuPanel {
   display: none;
 }
 
@@ -219,6 +226,12 @@ a {
 
 .matchGridHorizontal .matchCardLink {
   scroll-snap-align: start;
+}
+
+.matchListVertical {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
 }
 
 .matchGridHorizontal::-webkit-scrollbar {
@@ -404,9 +417,12 @@ a {
 }
 
 .sectionSeeAll {
-  color: var(--ink);
-  font-size: 0.98rem;
-  font-weight: 700;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--nav-bg), var(--nav-bg-dark));
+  border-radius: 10px;
+  padding: 0.45rem 0.75rem;
 }
 
 .topStoriesGrid {
@@ -477,6 +493,24 @@ a {
   color: var(--ink-soft);
   line-height: 1.75;
   white-space: pre-wrap;
+}
+
+.newsDetailRichContent {
+  color: var(--ink-soft);
+  line-height: 1.75;
+}
+
+.newsDetailRichContent p,
+.newsDetailRichContent ul,
+.newsDetailRichContent ol {
+  margin: 0 0 0.8rem;
+}
+
+.newsDetailRichContent img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 0.4rem 0;
 }
 
 .detailsShell {
@@ -841,13 +875,14 @@ a {
 }
 
 .primaryBtn {
-  background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+  background: linear-gradient(135deg, var(--nav-bg), var(--nav-bg-dark));
   color: white;
 }
 
 .ghostBtn {
-  border: 1px solid var(--line);
-  background: #f3f8ff;
+  border: 1px solid var(--nav-bg-dark);
+  background: var(--nav-bg);
+  color: #ffffff;
 }
 
 .inningsCard,
@@ -1004,6 +1039,8 @@ a {
 .footerBrand p {
   margin: 0;
   color: #d6d6d6;
+  font-size: 0.95rem;
+  font-weight: 500;
   line-height: 1.6;
   max-width: 32ch;
 }
@@ -1030,6 +1067,19 @@ a {
   color: #ececec;
   font-weight: 400;
   font-size: 0.82rem;
+}
+
+.footerApps h4,
+.footerFollow h4,
+.footerMore h4 {
+  font-weight: 800;
+}
+
+.footerApps a,
+.footerFollow a,
+.footerMore a {
+  font-weight: 700;
+  font-size: 0.86rem;
 }
 
 .footerCopy {
@@ -1163,7 +1213,7 @@ a {
   border: 0;
   border-radius: 10px;
   padding: 0.74rem 0.9rem;
-  background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+  background: linear-gradient(135deg, var(--nav-bg), var(--nav-bg-dark));
   color: #ffffff;
   font-weight: 800;
   cursor: pointer;
@@ -1368,6 +1418,49 @@ a {
   .mobileBottomTabs {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .mobileMenuOverlay {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.42);
+    position: fixed;
+    inset: 58px 0 0;
+    z-index: 72;
+  }
+
+  .mobileMenuOverlay.open {
+    display: block;
+  }
+
+  .mobileMenuPanel {
+    position: fixed;
+    top: 58px;
+    left: 0;
+    right: 0;
+    z-index: 73;
+    background: #00175f;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.35rem 0;
+  }
+
+  .mobileMenuPanel.open {
+    display: grid;
+  }
+
+  .mobileMenuPanel a {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.7rem 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .mobileMenuPanel a:first-child {
+    border-top: 0;
   }
 }
 
