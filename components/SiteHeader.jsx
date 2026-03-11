@@ -15,6 +15,12 @@ const navLinks = [
   {label: 'Ranking', href: '/ranking'},
 ];
 
+const legalLinks = [
+  {label: 'About Us', href: '/about-us'},
+  {label: 'Terms & Conditions', href: '/terms-and-conditions'},
+  {label: 'Privacy Policy', href: '/privacy-notice'},
+];
+
 const SiteHeader = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -65,6 +71,13 @@ const SiteHeader = () => {
             {link.label}
           </Link>
         ))}
+        <div className="mobileMenuLegal">
+          {legalLinks.map(link => (
+            <Link key={link.label} href={link.href} onClick={() => setMenuOpen(false)}>
+              {link.label}
+            </Link>
+          ))}
+        </div>
       </nav>
     </header>
   );

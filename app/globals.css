@@ -5,7 +5,7 @@
   --surface: #ffffff;
   --line: #e3e3e3;
   --brand: #009270;
-  --brand-dark: #007a61;
+  --brand-dark: #00175f;
   --accent: #3d3d3d;
   --live: #d73e3e;
   --upcoming: #b77610;
@@ -266,6 +266,81 @@ a {
 .matchCardLink:hover .matchCard {
   transform: translateY(-1px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.liveScoresShell {
+  width: min(1180px, calc(100% - 2rem));
+}
+
+.liveScoresGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 760px) 300px;
+  gap: 1rem;
+  align-items: start;
+  justify-content: center;
+}
+
+.liveScoresMain .matchCard {
+  min-height: 146px;
+  padding: 0.62rem;
+  gap: 0.42rem;
+  border-radius: 8px;
+}
+
+.liveScoresMain .series {
+  font-size: 0.58rem;
+}
+
+.liveScoresMain .teamRow span,
+.liveScoresMain .teamRow strong {
+  font-size: 0.8rem;
+}
+
+.liveScoresMain .venue {
+  font-size: 0.66rem;
+}
+
+.liveScoresMain .cardCta {
+  font-size: 0.72rem;
+  padding-top: 0.45rem;
+}
+
+.liveScoresAds {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.liveAdCard {
+  border: 1px solid var(--line);
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 0.8rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.liveAdLabel {
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+  font-size: 0.68rem;
+  color: #6d7481;
+}
+
+.liveAdBox {
+  min-height: 220px;
+  border: 1px dashed #bfc8d6;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, #f8fbff, #edf2fb);
+  color: #4e617f;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.liveAdBox.tall {
+  min-height: 520px;
 }
 
 .matchTop {
@@ -1346,6 +1421,22 @@ a {
   .matchGridHorizontal {
     grid-auto-columns: minmax(300px, 82vw);
   }
+
+  .liveScoresShell {
+    width: min(1180px, calc(100% - 2rem));
+  }
+
+  .liveScoresGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .liveScoresAds {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .liveAdBox.tall {
+    min-height: 250px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -1365,6 +1456,10 @@ a {
   .pageShell {
     width: calc(100% - 0.8rem);
     margin-bottom: 5.2rem;
+  }
+
+  .liveScoresShell {
+    width: calc(100% - 0.8rem);
   }
 
   .scoreHead,
@@ -1420,6 +1515,10 @@ a {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
+  .liveScoresAds {
+    grid-template-columns: 1fr;
+  }
+
   .mobileMenuOverlay {
     border: 0;
     padding: 0;
@@ -1461,6 +1560,17 @@ a {
 
   .mobileMenuPanel a:first-child {
     border-top: 0;
+  }
+
+  .mobileMenuLegal {
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+    margin-top: 0.3rem;
+    padding-top: 0.3rem;
+  }
+
+  .mobileMenuLegal a {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.92);
   }
 }
 
