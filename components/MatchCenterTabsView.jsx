@@ -410,7 +410,7 @@ const MatchCenterTabsView = ({scorecard, relatedNews = []}) => {
         <aside className="buzzSideColumn">
           <article className="buzzSideCard">
             <h3>SERIES NEWS</h3>
-            {relatedNews.length ? (
+            {/* {relatedNews.length ? (
               <div className="seriesNewsList">
                 {relatedNews.slice(0, 4).map(item => (
                   <Link key={item.id} href={buildNewsHref(item)} className="seriesNewsItem">
@@ -421,7 +421,7 @@ const MatchCenterTabsView = ({scorecard, relatedNews = []}) => {
               </div>
             ) : (
               <p className="muted">No series-specific news published yet.</p>
-            )}
+            )} */}
             <Link href="/news" className="ghostBtn">
               Open All News
             </Link>
