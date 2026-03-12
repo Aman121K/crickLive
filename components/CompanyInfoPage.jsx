@@ -34,9 +34,9 @@ const CompanyInfoPage = ({title, intro, sections = [], sourceLinks = [], tag = '
           </ul>
         </article>
 
-        <Link href="/" className="ghostBtn infoBackLink">
+        {/* <Link href="/" className="ghostBtn infoBackLink">
           Back to Home
-        </Link>
+        </Link> */}
       </section>
     </main>
   );
