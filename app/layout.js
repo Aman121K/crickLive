@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Script from 'next/script';
 import SiteHeader from '@/components/SiteHeader';
 import './globals.css';
 
@@ -54,6 +55,12 @@ export default function RootLayout({children}) {
   return (
     <html lang="en">
       <body>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5715868535815636"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         <div className="bgPattern" />
         <SiteHeader />
         <div className="siteContent">{children}</div>

@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import {notFound} from 'next/navigation';
 import {getNewsDetails} from '@/lib/api';
 
@@ -34,13 +33,8 @@ export default async function NewsDetailsPage({params, searchParams}) {
           <p className="heroTag">News Details</p>
           <h1>{news.title}</h1>
           <p className="heroCopy">
-            {news.tag} • {news.time}
+            {news.time} • {news.author || 'MyCricket Desk'}
           </p>
-        </div>
-        <div className="detailsActions">
-          <Link href="/" className="primaryBtn">
-            Back to Home
-          </Link>
         </div>
       </header>
 
@@ -54,6 +48,7 @@ export default async function NewsDetailsPage({params, searchParams}) {
           ) : (
             <p>Full details are not available for this news item yet.</p>
           )}
+          <p className="heroTag">{news.tag || 'MYCRICKET'}</p>
         </article>
       </section>
     </main>

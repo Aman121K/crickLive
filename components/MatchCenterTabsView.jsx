@@ -62,7 +62,29 @@ const tabs = [
   // {id: 'news', label: 'News'},
 ];
 
-const MatchCenterTabsView = ({scorecard}) => {
+const buildNewsHref = item => {
+  const newsId = encodeURIComponent(String(item.id || 'news'));
+  const selectedNewsPayload = encodeURIComponent(
+    JSON.stringify({
+      id: item.id,
+      title: item.title,
+      summary: item.summary || '',
+      content: item.content || '',
+      tag: item.tag || 'NEWS',
+      time: item.time || '',
+      author: item.author || '',
+      imageUrl: item.imageUrl || '',
+      thumbnailUrl: item.thumbnailUrl || '',
+    })
+  );
+
+  return {
+    pathname: `/news/${newsId}`,
+    query: {selected: selectedNewsPayload},
+  };
+};
+
+const MatchCenterTabsView = ({scorecard, relatedNews = []}) => {
   const [activeTab, setActiveTab] = useState('live');
 
   const info = Array.isArray(scorecard?.information) ? scorecard.information : [];
@@ -386,6 +408,24 @@ const MatchCenterTabsView = ({scorecard}) => {
         <div className="buzzMainColumn">{renderMainPanel()}</div>
 
         <aside className="buzzSideColumn">
+          <article className="buzzSideCard">
+            <h3>SERIES NEWS</h3>
+            {relatedNews.length ? (
+              <div className="seriesNewsList">
+                {relatedNews.slice(0, 4).map(item => (
+                  <Link key={item.id} href={buildNewsHref(item)} className="seriesNewsItem">
+                    <strong>{item.title}</strong>
+                    <p>{item.time}</p>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <p className="muted">No series-specific news published yet.</p>
+            )}
+            <Link href="/news" className="ghostBtn">
+              Open All News
+            </Link>
+          </article>
           <article className="buzzSideCard">
             <div className="buzzAdMock">Ad Space</div>
           </article>
