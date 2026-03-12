@@ -146,7 +146,7 @@ const MatchCenterTabsView = ({scorecard, relatedNews = []}) => {
     if (activeTab === 'info') {
       return (
         <section className="buzzInfoCard">
-          <div className="buzzInfoHeader">INFO</div>
+          {/* <div className="buzzInfoHeader">INFO</div> */}
           <div className="buzzInfoTable">
             {infoRows.map(item => (
               <article key={item.label} className="buzzInfoRow">
