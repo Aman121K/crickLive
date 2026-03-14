@@ -1,6 +1,8 @@
 import MatchCard from '@/components/MatchCard';
 import {getMatchesData} from '@/lib/api';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: 'Live Scores | MyCricket Web',
   description: 'Latest live cricket matches and scores.',

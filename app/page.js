@@ -2,7 +2,9 @@ import MatchCard from '@/components/MatchCard';
 import NewsCard from '@/components/NewsCard';
 import Link from 'next/link';
 import {redirect} from 'next/navigation';
-import {getMatchesData, getNewsData} from '@/lib/api';
+import {getMatchesData, getNewsData, getRankingsData, getTopTeamsData} from '@/lib/api';
+
+export const dynamic = 'force-dynamic';
 
 const MatchSection = ({id, title, subtitle, matches, horizontal = false}) => (
   <section className="sectionBlock" id={id}>
@@ -37,9 +39,16 @@ export default async function HomePage({searchParams}) {
     redirect('/live-scores');
   }
 
-  const [matches, news] = await Promise.all([getMatchesData(), getNewsData()]);
+  const [matches, news, teams, rankings] = await Promise.all([
+    getMatchesData(),
+    getNewsData(),
+    getTopTeamsData(),
+    getRankingsData(),
+  ]);
   const topStories = news.slice(0, 8);
   const homeLiveCards = matches.live || [];
+  const topTeams = teams.slice(0, 8);
+  const topRankings = (rankings?.teams || rankings?.batting || []).slice(0, 8);
 
   return (
     <main className="pageShell">
@@ -70,6 +79,62 @@ export default async function HomePage({searchParams}) {
 
       {view !== 'news' ? (
         <MatchSection id="matches" title="Live Matches" subtitle="" matches={homeLiveCards} horizontal />
+      ) : null}
+
+      {view !== 'news' ? (
+        <section className="sectionBlock" id="teams">
+          <div className="sectionHeader">
+            <div>
+              <p className="sectionEyebrow">Teams</p>
+              <h2>Team API</h2>
+            </div>
+            <Link href="/browse-team" className="sectionSeeAll">
+              See all
+            </Link>
+          </div>
+          {topTeams.length ? (
+            <div className="detailsInfoGrid">
+              {topTeams.map(team => (
+                <article key={team.id} className="detailsInfoCard">
+                  <p>{team.shortName || 'Team'}</p>
+                  <strong>{team.name}</strong>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <article className="emptyCard">
+              <p>No team response from RapidAPI right now.</p>
+            </article>
+          )}
+        </section>
+      ) : null}
+
+      {view !== 'news' ? (
+        <section className="sectionBlock" id="ranking">
+          <div className="sectionHeader">
+            <div>
+              <p className="sectionEyebrow">Rankings</p>
+              <h2>Ranking API</h2>
+            </div>
+            <Link href="/ranking" className="sectionSeeAll">
+              See all
+            </Link>
+          </div>
+          {topRankings.length ? (
+            <div className="detailsInfoGrid">
+              {topRankings.map((item, index) => (
+                <article key={`${item.name}-${index}`} className="detailsInfoCard">
+                  <p>#{item.rank || index + 1}</p>
+                  <strong>{item.name}</strong>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <article className="emptyCard">
+              <p>No ranking response from RapidAPI right now.</p>
+            </article>
+          )}
+        </section>
       ) : null}
 
       {view !== 'matches' ? (

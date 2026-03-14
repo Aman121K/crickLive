@@ -1,6 +1,8 @@
 import MatchCard from '@/components/MatchCard';
 import {getMatchesData} from '@/lib/api';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: 'Upcoming Series | MyCricket Web',
   description: 'Latest upcoming cricket matches and series.',
