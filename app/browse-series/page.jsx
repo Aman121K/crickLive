@@ -23,13 +23,10 @@ const toSeriesLine = item => {
 
 const BrowseSeriesPageWithData = async () => {
   const series = await getSeriesData({year: new Date().getFullYear(), perPage: 40});
+  const baseSourceLinks = Array.isArray(companyPages?.browseSeries?.sourceLinks) ? companyPages.browseSeries.sourceLinks : [];
 
   const sections = series.length
     ? [
-        {
-          heading: 'Live Series API Response',
-          points: [`Showing ${series.length} competitions from RapidAPI.`],
-        },
         {
           heading: 'Series',
           points: series.slice(0, 30).map(toSeriesLine),
@@ -51,7 +48,7 @@ const BrowseSeriesPageWithData = async () => {
       sourceLinks={[
         {label: 'Season Competition List', href: 'https://cricket-live-line-advance.p.rapidapi.com/season/2026/competitionlist'},
         {label: 'Competitions API Endpoint', href: 'https://cricket-live-line-advance.p.rapidapi.com/competitions'},
-        ...companyPages.browseSeries.sourceLinks,
+        ...baseSourceLinks,
       ]}
     />
   );

@@ -87,8 +87,8 @@ export default async function HomePage({searchParams}) {
         <section className="sectionBlock" id="series">
           <div className="sectionHeader">
             <div>
-              <p className="sectionEyebrow">Series</p>
-              <h2>Competitions API</h2>
+              {/* <p className="sectionEyebrow">Series</p> */}
+              <h2>Series</h2>
             </div>
             <Link href="/browse-series" className="sectionSeeAll">
               See all
@@ -115,8 +115,8 @@ export default async function HomePage({searchParams}) {
         <section className="sectionBlock" id="teams">
           <div className="sectionHeader">
             <div>
-              <p className="sectionEyebrow">Teams</p>
-              <h2>Team API</h2>
+              {/* <p className="sectionEyebrow">Teams</p> */}
+              <h2>Teams</h2>
             </div>
             <Link href="/browse-team" className="sectionSeeAll">
               See all
@@ -143,8 +143,8 @@ export default async function HomePage({searchParams}) {
         <section className="sectionBlock" id="ranking">
           <div className="sectionHeader">
             <div>
-              <p className="sectionEyebrow">Rankings</p>
-              <h2>Ranking API</h2>
+              {/* <p className="sectionEyebrow">Rankings</p> */}
+              <h2>Rankings</h2>
             </div>
             <Link href="/ranking" className="sectionSeeAll">
               See all

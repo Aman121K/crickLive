@@ -32,3 +32,13 @@ npm run website:dev
 - Set `RAPID_API_KEY` for Cricbuzz endpoints and `TEAM_RAPID_API_KEY` for team search endpoint.
 - If RapidAPI keys are missing/invalid, match, team, and ranking requests can fall back to placeholder/mock data.
 - If backend is unavailable, website falls back to mock news data.
+
+## Vercel Deployment
+
+- Add these env vars in Vercel Project Settings:
+  - `RAPID_API_KEY`
+  - `TEAM_RAPID_API_KEY`
+  - `RAPID_API_HOST=cricbuzz-cricket.p.rapidapi.com`
+  - `TEAM_RAPID_API_HOST=cricket-live-line-advance.p.rapidapi.com`
+- Redeploy after updating env vars.
+- Use `GET /api/rapid-health` on your deployed domain to verify key presence and live upstream status (200/429/etc).

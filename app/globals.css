@@ -319,6 +319,274 @@ a {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
+.rankingShell {
+  width: min(1220px, calc(100% - 2rem));
+}
+
+.rankingBoard {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.rankingHead {
+  padding: 1rem 1rem 0.2rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.rankingHead h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 1.35rem + 0.8vw, 2rem);
+}
+
+.rankingCategoryTabs {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.rankingCategoryTabs span {
+  color: #202223;
+  padding-bottom: 0.8rem;
+  border-bottom: 3px solid transparent;
+}
+
+.rankingCategoryTabs span.active {
+  color: var(--brand);
+  border-bottom-color: var(--brand);
+}
+
+.rankingBodyGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 370px;
+}
+
+.rankingMain {
+  border-right: 1px solid var(--line);
+  background: #fdfdfd;
+}
+
+.rankingFormatPills {
+  display: flex;
+  gap: 1rem;
+  padding: 1.2rem 1rem;
+}
+
+.rankingFormatPills span {
+  border: 2px solid var(--brand);
+  color: #1a1a1a;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1.02rem;
+  min-width: 92px;
+  text-align: center;
+  padding: 0.58rem 1rem;
+}
+
+.rankingFormatPills span.active {
+  background: var(--brand);
+  color: #fff;
+}
+
+.rankingTableWrap {
+  border-top: 1px solid var(--line);
+}
+
+.rankingTableHead {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr) 120px;
+  padding: 0.55rem 1rem;
+  background: #d7e5e1;
+  font-weight: 800;
+  font-size: 1.03rem;
+}
+
+.rankingTableHead span:last-child {
+  text-align: right;
+}
+
+.rankingRow {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr) 120px;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--line);
+  padding: 0.75rem 1rem;
+  min-height: 88px;
+  background: #fff;
+}
+
+.rankCol {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 300;
+  text-align: center;
+}
+
+.playerCol {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-width: 0;
+}
+
+.playerAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  background: #d1d5d8;
+  display: grid;
+  place-items: center;
+  color: #2f3439;
+  font-weight: 800;
+}
+
+.playerCol strong {
+  display: block;
+  font-size: 1.12rem;
+}
+
+.playerCol p {
+  margin: 0.15rem 0 0;
+  color: #80888d;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.pointsCol {
+  margin: 0;
+  text-align: right;
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.rankingSide {
+  padding: 0.9rem;
+  background: #f5f5f5;
+  display: grid;
+  align-content: start;
+  gap: 0.9rem;
+}
+
+.rankingAdCard,
+.rankingNewsCard {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+.rankingAdMock {
+  height: 300px;
+  border-radius: 6px;
+  background: linear-gradient(120deg, #c5d5df, #e7edf2);
+  color: #5b6570;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+}
+
+.rankingNewsCard h2 {
+  margin: 0 0 0.6rem;
+  color: var(--brand);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 1.8rem;
+}
+
+.rankingNewsList {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.rankingNewsItem {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  padding-top: 0.6rem;
+}
+
+.rankingNewsItem:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.rankingNewsItem img,
+.rankingNewsThumbPlaceholder {
+  width: 120px;
+  height: 72px;
+  border-radius: 6px;
+  object-fit: cover;
+  background: #d9dee2;
+}
+
+.rankingNewsItem strong {
+  font-size: 1rem;
+  line-height: 1.32;
+}
+
+.rankingNewsItem p,
+.rankingNewsEmpty {
+  margin: 0.3rem 0 0;
+  color: #7e858a;
+  font-size: 0.93rem;
+  font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+  .rankingBodyGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .rankingMain {
+    border-right: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .rankingTableHead,
+  .rankingRow {
+    grid-template-columns: 64px minmax(0, 1fr) 80px;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+  }
+
+  .rankCol,
+  .pointsCol {
+    font-size: 1.4rem;
+  }
+
+  .playerAvatar {
+    width: 38px;
+    height: 38px;
+    font-size: 0.78rem;
+  }
+
+  .playerCol strong {
+    font-size: 0.98rem;
+  }
+
+  .rankingNewsCard h2 {
+    font-size: 1.24rem;
+  }
+
+  .rankingNewsItem {
+    grid-template-columns: 96px minmax(0, 1fr);
+  }
+
+  .rankingNewsItem img,
+  .rankingNewsThumbPlaceholder {
+    width: 96px;
+    height: 60px;
+  }
+}
+
 .liveAdLabel {
   margin: 0 0 0.5rem;
   text-transform: uppercase;

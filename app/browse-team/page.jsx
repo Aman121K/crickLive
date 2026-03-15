@@ -19,10 +19,10 @@ const BrowseTeamPage = async () => {
 
   const sections = teams.length
     ? [
-        {
-          heading: 'Live Team API Response',
-          points: [`Showing ${teams.length} team records for search query "india".`],
-        },
+        // {
+        //   heading: 'Live Team API Response',
+        //   points: [`Showing ${teams.length} team records for search query "india".`],
+        // },
         {
           heading: 'Teams',
           points: teams.map(buildTeamLine),
@@ -41,10 +41,10 @@ const BrowseTeamPage = async () => {
       {...companyPages.browseTeam}
       intro="Live team data powered by RapidAPI endpoint: /teams?search=india&per_page=50&paged=1"
       sections={sections}
-      sourceLinks={[
-        {label: 'Teams API Endpoint', href: 'https://cricket-live-line-advance.p.rapidapi.com/teams'},
-        ...companyPages.browseTeam.sourceLinks,
-      ]}
+      // sourceLinks={[
+      //   {label: 'Teams API Endpoint', href: 'https://cricket-live-line-advance.p.rapidapi.com/teams'},
+      //   ...companyPages.browseTeam.sourceLinks,
+      // ]}
     />
   );
 };
