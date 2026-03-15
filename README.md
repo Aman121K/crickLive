@@ -29,5 +29,6 @@ npm run website:dev
 
 ## Notes
 
-- If `RAPID_API_KEY` is missing, website falls back to mock match data.
+- Set `RAPID_API_KEY` for Cricbuzz endpoints and `TEAM_RAPID_API_KEY` for team search endpoint.
+- If RapidAPI keys are missing/invalid, match, team, and ranking requests can fall back to placeholder/mock data.
 - If backend is unavailable, website falls back to mock news data.

@@ -2,7 +2,7 @@ import MatchCard from '@/components/MatchCard';
 import NewsCard from '@/components/NewsCard';
 import Link from 'next/link';
 import {redirect} from 'next/navigation';
-import {getMatchesData, getNewsData, getRankingsData, getTopTeamsData} from '@/lib/api';
+import {getMatchesData, getNewsData, getRankingsData, getSeriesData, getTopTeamsData} from '@/lib/api';
 
 export const dynamic = 'force-dynamic';
 
@@ -39,16 +39,18 @@ export default async function HomePage({searchParams}) {
     redirect('/live-scores');
   }
 
-  const [matches, news, teams, rankings] = await Promise.all([
+  const [matches, news, teams, rankings, series] = await Promise.all([
     getMatchesData(),
     getNewsData(),
     getTopTeamsData(),
     getRankingsData(),
+    getSeriesData({year: new Date().getFullYear(), perPage: 20}),
   ]);
   const topStories = news.slice(0, 8);
   const homeLiveCards = matches.live || [];
   const topTeams = teams.slice(0, 8);
   const topRankings = (rankings?.teams || rankings?.batting || []).slice(0, 8);
+  const topSeries = series.slice(0, 8);
 
   return (
     <main className="pageShell">
@@ -79,6 +81,34 @@ export default async function HomePage({searchParams}) {
 
       {view !== 'news' ? (
         <MatchSection id="matches" title="Live Matches" subtitle="" matches={homeLiveCards} horizontal />
+      ) : null}
+
+      {view !== 'news' ? (
+        <section className="sectionBlock" id="series">
+          <div className="sectionHeader">
+            <div>
+              <p className="sectionEyebrow">Series</p>
+              <h2>Competitions API</h2>
+            </div>
+            <Link href="/browse-series" className="sectionSeeAll">
+              See all
+            </Link>
+          </div>
+          {topSeries.length ? (
+            <div className="detailsInfoGrid">
+              {topSeries.map(item => (
+                <article key={item.id} className="detailsInfoCard">
+                  <p>{item.season ? `Season ${item.season}` : 'Competition'}</p>
+                  <strong>{item.title}</strong>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <article className="emptyCard">
+              <p>No series response from RapidAPI right now.</p>
+            </article>
+          )}
+        </section>
       ) : null}
 
       {view !== 'news' ? (
