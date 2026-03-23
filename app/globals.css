@@ -50,6 +50,18 @@ a {
   gap: 1rem;
 }
 
+.homeShell {
+  font-size: 15px;
+}
+
+.homeShell .sectionHeader h2 {
+  font-size: clamp(1.08rem, 1rem + 0.35vw, 1.28rem);
+}
+
+.homeShell .detailsInfoCard strong {
+  font-size: 1.03rem;
+}
+
 .siteContent {
   flex: 1;
 }

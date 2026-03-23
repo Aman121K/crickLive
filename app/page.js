@@ -51,7 +51,7 @@ export default async function HomePage({searchParams}) {
   const topSeries = series.slice(0, 8);
 
   return (
-    <main className="pageShell">
+    <main className="pageShell homeShell">
       {/* <header className="hero">
         <div>
           <p className="heroTag">MyCricket Platform</p>
