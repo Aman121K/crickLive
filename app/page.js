@@ -2,7 +2,7 @@ import MatchCard from '@/components/MatchCard';
 import NewsCard from '@/components/NewsCard';
 import Link from 'next/link';
 import {redirect} from 'next/navigation';
-import {getMatchesData, getNewsData, getRankingsData, getSeriesData, getTopTeamsData} from '@/lib/api';
+import {getMatchesData, getNewsData, getSeriesData, getTopTeamsData} from '@/lib/api';
 
 export const dynamic = 'force-dynamic';
 
@@ -39,17 +39,15 @@ export default async function HomePage({searchParams}) {
     redirect('/live-scores');
   }
 
-  const [matches, news, teams, rankings, series] = await Promise.all([
+  const [matches, news, teams, series] = await Promise.all([
     getMatchesData(),
     getNewsData(),
     getTopTeamsData(),
-    getRankingsData(),
     getSeriesData({year: new Date().getFullYear(), perPage: 20}),
   ]);
   const topStories = news.slice(0, 8);
   const homeLiveCards = matches.live || [];
   const topTeams = teams.slice(0, 8);
-  const topRankings = (rankings?.teams || rankings?.batting || []).slice(0, 8);
   const topSeries = series.slice(0, 8);
 
   return (
@@ -105,7 +103,7 @@ export default async function HomePage({searchParams}) {
             </div>
           ) : (
             <article className="emptyCard">
-              <p>No series response from RapidAPI right now.</p>
+              <p>No series response from SportMonks right now.</p>
             </article>
           )}
         </section>
@@ -133,35 +131,7 @@ export default async function HomePage({searchParams}) {
             </div>
           ) : (
             <article className="emptyCard">
-              <p>No team response from RapidAPI right now.</p>
-            </article>
-          )}
-        </section>
-      ) : null}
-
-      {view !== 'news' ? (
-        <section className="sectionBlock" id="ranking">
-          <div className="sectionHeader">
-            <div>
-              {/* <p className="sectionEyebrow">Rankings</p> */}
-              <h2>Rankings</h2>
-            </div>
-            <Link href="/ranking" className="sectionSeeAll">
-              See all
-            </Link>
-          </div>
-          {topRankings.length ? (
-            <div className="detailsInfoGrid">
-              {topRankings.map((item, index) => (
-                <article key={`${item.name}-${index}`} className="detailsInfoCard">
-                  <p>#{item.rank || index + 1}</p>
-                  <strong>{item.name}</strong>
-                </article>
-              ))}
-            </div>
-          ) : (
-            <article className="emptyCard">
-              <p>No ranking response from RapidAPI right now.</p>
+              <p>No team response from SportMonks right now.</p>
             </article>
           )}
         </section>

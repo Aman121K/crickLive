@@ -6,6 +6,13 @@ const nextConfig = {
       {protocol: 'http', hostname: '**'},
     ],
   },
+  webpack: (config, {dev}) => {
+    // Prevent stale filesystem cache from causing "options.factory" runtime crashes in dev.
+    if (dev) {
+      config.cache = false;
+    }
+    return config;
+  },
 };
 
 export default nextConfig;

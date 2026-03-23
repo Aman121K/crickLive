@@ -4,12 +4,12 @@
   --ink-soft: #48494a;
   --surface: #ffffff;
   --line: #e3e3e3;
-  --brand: #009270;
-  --brand-dark: #00175f;
+  --brand: #00175f;
+  --brand-dark: #000f46;
   --accent: #3d3d3d;
   --live: #d73e3e;
   --upcoming: #b77610;
-  --result: #1b7c52;
+  --result: #1d4f9f;
   --nav-bg: #00175f;
   --nav-bg-dark: #000f46;
 }
@@ -400,7 +400,7 @@ a {
   display: grid;
   grid-template-columns: 100px minmax(0, 1fr) 120px;
   padding: 0.55rem 1rem;
-  background: #d7e5e1;
+  background: #e5ebf7;
   font-weight: 800;
   font-size: 1.03rem;
 }
@@ -1106,13 +1106,130 @@ a {
 }
 
 .buzzInfoHeader {
-  background: #dcebe6;
+  background: #e6ecf9;
   color: #5f676f;
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: 0.02em;
   padding: 0.65rem 0.9rem;
   line-height: 1;
+}
+
+.teamsShell {
+  width: min(1220px, calc(100% - 2rem));
+}
+
+.teamsDirectory {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.teamsDirectoryHead {
+  padding: 0.95rem 1rem 1rem;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, #f7f9ff, #ffffff);
+}
+
+.teamsDirectoryHead h1 {
+  margin: 0.2rem 0 0.25rem;
+  font-size: clamp(1.5rem, 1.35rem + 0.8vw, 2rem);
+}
+
+.teamsDirectoryHead p {
+  margin: 0;
+  color: #626b79;
+  font-weight: 700;
+}
+
+.teamsGroupList {
+  display: grid;
+}
+
+.teamsGroup {
+  border-top: 1px solid var(--line);
+}
+
+.teamsGroup:first-child {
+  border-top: 0;
+}
+
+.teamsGroupTitle {
+  padding: 0.6rem 1rem;
+  background: #f2f5fc;
+  border-bottom: 1px solid var(--line);
+}
+
+.teamsGroupTitle h2 {
+  margin: 0;
+  color: var(--brand-dark);
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+}
+
+.teamsGrid {
+  padding: 0.8rem 1rem 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 0.72rem;
+}
+
+.teamTile {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 0.72rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.teamTileHead {
+  display: flex;
+  align-items: center;
+  gap: 0.52rem;
+}
+
+.teamFlag {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid #ccd5ea;
+  background: #eef2fb;
+  color: #2a3e6f;
+  font-size: 0.72rem;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.teamTileHead strong {
+  line-height: 1.35;
+  color: #1d232b;
+}
+
+.teamMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.36rem;
+}
+
+.teamMeta span {
+  border-radius: 999px;
+  border: 1px solid #c6d1eb;
+  background: #f4f7ff;
+  color: #334a7e;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 0.23rem 0.48rem;
+}
+
+.teamMetaEmpty {
+  margin: 0;
+  color: #6e7582;
+  font-size: 0.82rem;
 }
 
 .buzzInfoTable {
@@ -1787,6 +1904,23 @@ a {
 
   .newsListMeta {
     font-size: 0.82rem;
+  }
+
+  .teamsShell {
+    width: calc(100% - 0.8rem);
+  }
+
+  .teamsDirectoryHead {
+    padding: 0.85rem 0.75rem 0.9rem;
+  }
+
+  .teamsGroupTitle {
+    padding: 0.55rem 0.75rem;
+  }
+
+  .teamsGrid {
+    padding: 0.65rem 0.75rem 0.85rem;
+    grid-template-columns: 1fr;
   }
 
   .matchGridHorizontal {

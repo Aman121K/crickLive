@@ -43,11 +43,11 @@ const BrowseSeriesPageWithData = async () => {
   return (
     <CompanyInfoPage
       {...companyPages.browseSeries}
-      intro="Live series data powered by RapidAPI endpoints: /season/{year}/competitionlist and /competitions."
+      intro="Live series data powered by SportMonks endpoints: /api/v2.0/leagues and /api/v2.0/seasons."
       sections={sections}
       sourceLinks={[
-        {label: 'Season Competition List', href: 'https://cricket-live-line-advance.p.rapidapi.com/season/2026/competitionlist'},
-        {label: 'Competitions API Endpoint', href: 'https://cricket-live-line-advance.p.rapidapi.com/competitions'},
+        {label: 'Leagues API Endpoint', href: 'https://cricket.sportmonks.com/api/v2.0/leagues'},
+        {label: 'Seasons API Endpoint', href: 'https://cricket.sportmonks.com/api/v2.0/seasons'},
         ...baseSourceLinks,
       ]}
     />

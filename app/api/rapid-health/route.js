@@ -10,29 +10,14 @@ const envFirst = names => {
   return '';
 };
 
-const RAPID_API_HOST =
-  envFirst(['RAPID_API_HOST', 'RAPIDAPI_HOST', 'NEXT_PUBLIC_RAPID_API_HOST']) || 'cricbuzz-cricket.p.rapidapi.com';
-const TEAM_RAPID_API_HOST =
-  envFirst(['TEAM_RAPID_API_HOST', 'RAPID_TEAM_API_HOST', 'NEXT_PUBLIC_TEAM_RAPID_API_HOST']) ||
-  'cricket-live-line-advance.p.rapidapi.com';
-const RAPID_API_KEY = envFirst([
-  'RAPID_API_KEY',
-  'RAPIDAPI_KEY',
-  'X_RAPIDAPI_KEY',
-  'NEXT_PUBLIC_RAPID_API_KEY',
-]);
-const TEAM_RAPID_API_KEY = envFirst([
-  'TEAM_RAPID_API_KEY',
-  'RAPID_TEAM_API_KEY',
-  'NEXT_PUBLIC_TEAM_RAPID_API_KEY',
-  'NEXT_PUBLIC_RAPID_API_KEY',
-  'RAPID_API_KEY',
-  'RAPIDAPI_KEY',
-  'X_RAPIDAPI_KEY',
-]);
+const SPORTMONKS_BASE_URL =
+  envFirst(['SPORTMONKS_BASE_URL', 'NEXT_PUBLIC_SPORTMONKS_BASE_URL']) || 'https://cricket.sportmonks.com/api/v2.0';
+const SPORTMONKS_AUTH_TOKEN =
+  envFirst(['SPORTMONKS_AUTH_TOKEN', 'SPORTMONKS_TOKEN', 'NEXT_PUBLIC_SPORTMONKS_TOKEN']) ||
+  '06tC31OZQ0eRBASH6j7BHs5zFieRXDjcrhzSgBMYAJmgsJtbcpi8EeY8DSiA';
 
-const probe = async ({url, host, key}) => {
-  if (!key) {
+const probe = async ({url, token}) => {
+  if (!token) {
     return {ok: false, status: 0, error: 'missing_key'};
   }
 
@@ -40,8 +25,7 @@ const probe = async ({url, host, key}) => {
     const response = await fetch(url, {
       method: 'GET',
       headers: {
-        'x-rapidapi-host': host,
-        'x-rapidapi-key': key,
+        Authorization: token,
       },
       cache: 'no-store',
     });
@@ -64,30 +48,26 @@ const probe = async ({url, host, key}) => {
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
-  const [cricbuzz, teamApi] = await Promise.all([
+  const [teams, fixtures] = await Promise.all([
     probe({
-      url: 'https://cricbuzz-cricket.p.rapidapi.com/matches/v1/live',
-      host: RAPID_API_HOST,
-      key: RAPID_API_KEY,
+      url: `${SPORTMONKS_BASE_URL}/teams`,
+      token: SPORTMONKS_AUTH_TOKEN,
     }),
     probe({
-      url: 'https://cricket-live-line-advance.p.rapidapi.com/matches?paged=1&per_page=1&status=3',
-      host: TEAM_RAPID_API_HOST,
-      key: TEAM_RAPID_API_KEY,
+      url: `${SPORTMONKS_BASE_URL}/fixtures?per_page=1`,
+      token: SPORTMONKS_AUTH_TOKEN,
     }),
   ]);
 
   return NextResponse.json(
     {
       env: {
-        rapidApiHost: RAPID_API_HOST,
-        teamRapidApiHost: TEAM_RAPID_API_HOST,
-        rapidApiKeyPresent: Boolean(RAPID_API_KEY),
-        teamRapidApiKeyPresent: Boolean(TEAM_RAPID_API_KEY),
+        sportMonksBaseUrl: SPORTMONKS_BASE_URL,
+        sportMonksAuthTokenPresent: Boolean(SPORTMONKS_AUTH_TOKEN),
       },
       checks: {
-        cricbuzz,
-        teamApi,
+        teams,
+        fixtures,
       },
     },
     {status: 200}
