@@ -331,6 +331,70 @@ a {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
+.scheduleSeriesMain {
+  gap: 0.65rem;
+}
+
+.scheduleSeriesTableWrap {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.scheduleSeriesTable {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.scheduleSeriesTable thead th {
+  background: #e9e9e9;
+  color: #242526;
+  text-align: left;
+  padding: 0.72rem 0.9rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.scheduleSeriesTable thead th:first-child {
+  width: 220px;
+}
+
+.scheduleSeriesTable tbody th,
+.scheduleSeriesTable tbody td {
+  border-bottom: 1px solid #e4e4e4;
+  padding: 0.9rem 1rem;
+  vertical-align: top;
+  background: #fff;
+}
+
+.scheduleSeriesTable tbody tr:last-child th,
+.scheduleSeriesTable tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.scheduleMonthCell {
+  font-size: 1.16rem;
+  font-weight: 800;
+  color: #14171d;
+}
+
+.scheduleSeriesTitle {
+  margin: 0;
+  font-size: 1.14rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #17191d;
+}
+
+.scheduleSeriesDate {
+  margin: 0.22rem 0 0;
+  color: #6d6f73;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
 .rankingShell {
   width: min(1220px, calc(100% - 2rem));
 }
@@ -1131,6 +1195,13 @@ a {
   width: min(1220px, calc(100% - 2rem));
 }
 
+.teamsBoardGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 1rem;
+  align-items: start;
+}
+
 .teamsDirectory {
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -1139,7 +1210,7 @@ a {
 }
 
 .teamsDirectoryHead {
-  padding: 0.95rem 1rem 1rem;
+  padding: 0.95rem 1rem 0.9rem;
   border-bottom: 1px solid var(--line);
   background: linear-gradient(180deg, #f7f9ff, #ffffff);
 }
@@ -1155,93 +1226,44 @@ a {
   font-weight: 700;
 }
 
-.teamsGroupList {
+.teamSimpleList {
+  padding: 0.85rem 1rem 1rem;
   display: grid;
-}
-
-.teamsGroup {
-  border-top: 1px solid var(--line);
-}
-
-.teamsGroup:first-child {
-  border-top: 0;
-}
-
-.teamsGroupTitle {
-  padding: 0.6rem 1rem;
-  background: #f2f5fc;
-  border-bottom: 1px solid var(--line);
-}
-
-.teamsGroupTitle h2 {
-  margin: 0;
-  color: var(--brand-dark);
-  font-size: 1rem;
-  letter-spacing: 0.03em;
-}
-
-.teamsGrid {
-  padding: 0.8rem 1rem 1rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.72rem;
 }
 
-.teamTile {
+.teamSimpleItem {
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: 8px;
   background: #ffffff;
-  padding: 0.72rem;
-  display: grid;
-  gap: 0.55rem;
+  padding: 0.75rem;
 }
 
-.teamTileHead {
+.teamSimpleIdentity {
   display: flex;
   align-items: center;
-  gap: 0.52rem;
+  gap: 0.58rem;
 }
 
-.teamFlag {
+.teamSimpleFlag {
   width: 34px;
   height: 34px;
-  border-radius: 999px;
-  border: 1px solid #ccd5ea;
-  background: #eef2fb;
-  color: #2a3e6f;
-  font-size: 0.72rem;
+  border-radius: 6px;
+  border: 1px solid #d4d9e5;
+  background: #f5f7fc;
+  color: #2f425f;
+  font-size: 0.95rem;
   font-weight: 800;
   display: grid;
   place-items: center;
   flex-shrink: 0;
 }
 
-.teamTileHead strong {
+.teamSimpleIdentity strong {
   line-height: 1.35;
-  color: #1d232b;
-}
-
-.teamMeta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.36rem;
-}
-
-.teamMeta span {
-  border-radius: 999px;
-  border: 1px solid #c6d1eb;
-  background: #f4f7ff;
-  color: #334a7e;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  padding: 0.23rem 0.48rem;
-}
-
-.teamMetaEmpty {
-  margin: 0;
-  color: #6e7582;
-  font-size: 0.82rem;
+  color: #161d29;
+  font-size: 1.03rem;
 }
 
 .buzzInfoTable {
@@ -1855,6 +1877,10 @@ a {
     grid-template-columns: 1fr;
   }
 
+  .teamsBoardGrid {
+    grid-template-columns: 1fr;
+  }
+
   .liveScoresAds {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1926,13 +1952,28 @@ a {
     padding: 0.85rem 0.75rem 0.9rem;
   }
 
-  .teamsGroupTitle {
-    padding: 0.55rem 0.75rem;
-  }
-
-  .teamsGrid {
+  .teamSimpleList {
     padding: 0.65rem 0.75rem 0.85rem;
     grid-template-columns: 1fr;
+  }
+
+  .scheduleSeriesTable thead th,
+  .scheduleSeriesTable tbody th,
+  .scheduleSeriesTable tbody td {
+    padding-left: 0.68rem;
+    padding-right: 0.68rem;
+  }
+
+  .scheduleSeriesTable thead th:first-child {
+    width: 38%;
+  }
+
+  .scheduleMonthCell {
+    font-size: 1.03rem;
+  }
+
+  .scheduleSeriesTitle {
+    font-size: 1.02rem;
   }
 
   .matchGridHorizontal {
